@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>A resin.io example service &middot; Antonio Lignan</title>
+        <meta name="description" content="A resin.io example service This is part of my Challenge to make 26 years before 2017 ends.
+This is part of my Project to build an autonomous and remote-controlled watering system for my bonsai, and part of my learning journey to use resin.io. The first step was to understand how to deploy to resin.io and my target device.
+Setting up the repository and first tests The project repository lives at: https://github.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="A resin.io example service">
+<meta property="og:description" content="A resin.io example service This is part of my Challenge to make 26 years before 2017 ends.
+This is part of my Project to build an autonomous and remote-controlled watering system for my bonsai, and part of my learning journey to use resin.io. The first step was to understand how to deploy to resin.io and my target device.
+Setting up the repository and first tests The project repository lives at: https://github.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/resinio-example-service/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A resin.io example service</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-11-25" itemprop="datePublished">Sat, Nov 25, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="a-resin-io-example-service">A resin.io example service</h1>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge to make 26 years before 2017 ends</a>.</p>
+
+<p>This is part of my Project to build an autonomous and remote-controlled watering system for <a href="/post/my-new-bonsai/">my bonsai</a>, and part of my learning journey to use <a href="/post/resin-io-about/">resin.io</a>.  The first step was to understand how to deploy to resin.io and my target device.</p>
+
+<h2 id="setting-up-the-repository-and-first-tests">Setting up the repository and first tests</h2>
+
+<p>The project repository lives at:
+<a href="https://github.com/alignan/kodama-guardian">https://github.com/alignan/kodama-guardian</a></p>
+
+<p>Make sure to include your <code>SSH keys</code> in resin.io, alternatively you can just import your existing Github keys directly.</p>
+
+<p>I used <a href="https://github.com/resin-io-projects/simple-server-python">the simple server example</a> from resion.io as a reference for a first tour.</p>
+
+<p>The <code>Dockerfile</code> configuration is straightforward, as a base image it can be either <code>%%RESIN_MACHINE_NAME%%</code> to allow multiple architecture support, or it can be defined for a specific target, i.e. <code>aspberry-pi2-python</code>.</p>
+
+<p>the rest is just python.</p>
+
+<p>Next step is to add the remote end to resin.io to our repository.</p>
+
+<pre><code class="language-bash">git remote add resin antonio_lignan@git.resin.io:antonio_lignan/antonio2rpi.git
+</code></pre>
+
+<p>And push to resin.io:</p>
+
+<pre><code class="language-bash">git push resin master
+</code></pre>
+
+<p>The following</p>
+
+<pre><code class="language-bash">
+[Info]     Starting build for antonio_lignan/antonio2rpi, user antonio_lignan
+[Info]     Dashboard link: https://dashboard.resin.io/apps/738468/devices
+[Info]     Building on arm01
+[Info]     Fetching base image
+[Warning]  No image tag given for resin/raspberry-pi2-python, using default (latest)
+[==================================================&gt;] 100%
+[Info]     Building Standard Dockerfile project
+[Build]    Step 1/7 : FROM resin/raspberry-pi2-python
+[Build]    Step 2/7 : WORKDIR /usr/src/app
+[Build]    Removing intermediate container 3b71c8e8f087
+[Build]    Step 3/7 : COPY ./requirements.txt /requirements.txt
+[Build]    Removing intermediate container de12dd545c91
+[Build]    Step 4/7 : RUN pip install -r /requirements.txt
+[Build]     ---&gt; Running in f64451083aa5
+[Build]    Collecting Flask==0.10.1 (from -r /requirements.txt (line 1))
+[Build]      Downloading Flask-0.10.1.tar.gz (544kB)
+[Build]    Collecting Werkzeug&gt;=0.7 (from Flask==0.10.1-&gt;-r /requirements.txt (line 1))
+[Build]      Downloading Werkzeug-0.12.2-py2.py3-none-any.whl (312kB)
+[Build]    Collecting Jinja2&gt;=2.4 (from Flask==0.10.1-&gt;-r /requirements.txt (line 1))
+[Build]      Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)
+[Build]    Collecting itsdangerous&gt;=0.21 (from Flask==0.10.1-&gt;-r /requirements.txt (line 1))
+[Build]      Downloading itsdangerous-0.24.tar.gz (46kB)
+[Build]    Collecting MarkupSafe&gt;=0.23 (from Jinja2&gt;=2.4-&gt;Flask==0.10.1-&gt;-r /requirements.txt (line 1))
+[Build]      Downloading MarkupSafe-1.0.tar.gz
+[Build]    Building wheels for collected packages: Flask, itsdangerous, MarkupSafe
+[Build]      Running setup.py bdist_wheel for Flask: started
+[Build]      Running setup.py bdist_wheel for Flask: finished with status 'done'
+[Build]      Stored in directory: /root/.cache/pip/wheels/b6/
+[Build]      Running setup.py bdist_wheel for itsdangerous: started
+[Build]      Running setup.py bdist_wheel for itsdangerous: finished with status 'done'
+[Build]      Stored in directory: /root/.cache/pip/wheels/fc/a8/66/24d655233c757e178d45dea2de22a04c6d92766abfb741129a
+[Build]      Running setup.py bdist_wheel for MarkupSafe: started
+[Build]      Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+[Build]      Stored in directory: /root/.cache/pip/wheels/88/a7/30/e39a54a87bcbe25308fa3ca64e8ddc75d9b3e5afa21ee32d57
+[Build]    Successfully built Flask itsdangerous MarkupSafe
+[Build]    Installing collected packages: Werkzeug, MarkupSafe, Jinja2, itsdangerous, Flask
+[Build]    Successfully installed Flask-0.10.1 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.12.2 itsdangerous-0.24
+[Build]     ---&gt; e88897418072
+[Build]    Removing intermediate container f64451083aa5
+[Build]    Step 5/7 : COPY . ./
+[Build]     ---&gt; cadb1b4320ce
+[Build]    Removing intermediate container acfb3a3dfa45
+[Build]    Step 6/7 : ENV INITSYSTEM on
+[Build]     ---&gt; Running in 085183d23e60
+[Build]     ---&gt; 185c660d19d9
+[Build]    Removing intermediate container 085183d23e60
+[Build]    Step 7/7 : CMD python src/example-flask.py
+[Build]     ---&gt; Running in 946bc786e890
+[Build]     ---&gt; a8c9ed31d3d3
+[Build]    Removing intermediate container 946bc786e890
+[Build]    Successfully built a8c9ed31d3d3
+[Build]    Successfully tagged registry2.resin.io:443/antonio2rpi/
+[Success]  Image created successfully
+[Info]     Verifying image integrity...
+[Success]  Image passed integrity checks!
+[Info]     Uploading image to registry...
+[==================================================&gt;] 100%
+[Success]  Image uploaded successfully!
+[Info]     Check your dashboard for device download progress:
+[Info]       https://dashboard.resin.io/apps/738468/devices
+[Info]     Build took 44 seconds
+[Info]     486.60 MB total image size
+[Info]     480.67 MB resin/raspberry-pi2-python:latest
+[Info]     5.93 MB user additions
+			    \
+			     \
+			      \\
+			       \\
+			        &gt;\/7
+			    _.-(6'  \
+			   (=___._/` \
+			        )  \ |
+			       /   / |
+			      /    &gt; /
+			     j    &lt; _\
+			 _.-' :      ``.
+			 \ r=._\        `.
+			&lt;`\\_  \         .`-.
+			 \ r-7  `-. ._  ' .  `\
+			  \`,      `-.`7  7)   )
+			   \/         \|  \'  / `-._
+			              ||    .'
+			               \\  (
+			                &gt;\  &gt;
+			            ,.-' &gt;.'
+			           &lt;.'_.''
+			             &lt;'
+
+To git.resin.io:antonio_lignan/antonio2rpi.git
+ * [new branch]      master -&gt; master
+</code></pre>
+
+<p>And that&rsquo;s it.</p>
+
+<h2 id="what-a-deployed-application-looks-like">What a deployed application looks like</h2>
+
+<p>A cool thing I found about resin.io is their <code>Terminal</code>, which resembles the device&rsquo;s own terminal.  In the image below the running service is shown:</p>
+
+<p><a href="/img/resinio-example-service/00.png"><img src="/img/resinio-example-service/00.png" alt="" /></a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/iot/">IoT</a>, 
+            
+                <a href="/tags/resin/">Resin</a>, 
+            
+                <a href="/tags/raspberry-pi/">Raspberry Pi</a>, 
+            
+                <a href="/tags/docker/">Docker</a>, 
+            
+                <a href="/tags/challenge-2017/">Challenge 2017</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=A%20resin.io%20example%20service&url=%2fpost%2fresinio-example-service%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fresinio-example-service%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fresinio-example-service%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=A%20resin.io%20example%20service&url=%2fpost%2fresinio-example-service%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

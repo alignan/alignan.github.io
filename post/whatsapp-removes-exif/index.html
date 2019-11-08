@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Whatsapp Removes Exif properties &middot; Antonio Lignan</title>
+        <meta name="description" content="Whatsapp removes Exif properties When backing up the photos from my mobile phone to my laptop, and then to Google Photos I noticed something odd: when syncing, most of the photos were shown as it were created just at that moment, even if some images were months older.
+This is quite inconvenient.
+Then I noticed not all the photos backed to Google Photos had this problem, and a deeper look at the EXIF properties of two different files confirmed my assumptions: Whatsapp removes these properties when sharing photos.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Whatsapp Removes Exif properties">
+<meta property="og:description" content="Whatsapp removes Exif properties When backing up the photos from my mobile phone to my laptop, and then to Google Photos I noticed something odd: when syncing, most of the photos were shown as it were created just at that moment, even if some images were months older.
+This is quite inconvenient.
+Then I noticed not all the photos backed to Google Photos had this problem, and a deeper look at the EXIF properties of two different files confirmed my assumptions: Whatsapp removes these properties when sharing photos.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/whatsapp-removes-exif/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Whatsapp Removes Exif properties</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-11-01" itemprop="datePublished">Wed, Nov 1, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="whatsapp-removes-exif-properties">Whatsapp removes Exif properties</h1>
+
+<p>When backing up the photos from my mobile phone to my laptop, and then to <code>Google Photos</code> I noticed something odd: when syncing, most of the photos were shown as it were created just at that moment, even if some images were months older.</p>
+
+<p>This is quite inconvenient.</p>
+
+<p>Then I noticed not all the photos backed to <code>Google Photos</code> had this problem, and a deeper look at the <a href="https://en.wikipedia.org/wiki/Exif">EXIF properties</a> of two different files confirmed my assumptions: <a href="https://www.whatsapp.com">Whatsapp</a> removes these properties when sharing photos.</p>
+
+<p>These are the <code>Exif properties</code> of a &ldquo;good&rdquo; photo:</p>
+
+<p><a href="/img/whatsapp-removes-exif/00.png"><img src="/img/whatsapp-removes-exif/00.png" alt="" /></a></p>
+
+<p>And the <code>Whatsapp</code> ones:</p>
+
+<p><a href="/img/whatsapp-removes-exif/01.png"><img src="/img/whatsapp-removes-exif/01.png" alt="" /></a></p>
+
+<p>This has been discussed as well in <a href="https://www.quora.com/Do-pictures-sent-on-WhatsApp-keep-their-EXIF-data">Quora</a>.  Apparently, this saves some extra bytes and helps to compress the photos sent.  Also, it contributes to keep privacy.  I understand the motivations, but it is <strong>a Pain in the Ass</strong>.</p>
+
+<p>What properties am I talking about? simple ones, such as Creation and Modification date.</p>
+
+<p>When syncing photos to <code>Google Photos</code>, if these values are not found, then the application just fills in the appropriate ones, using the sync time-stamp as new value, thus losing all time-relevancy when sorting photos.</p>
+
+<p>The only option I have found is to install <code>Google Photos</code> in my mobile, and have <code>Whatsapp</code> photo folders to automatically sync, however for limited data budgets this may be an issue (not my issue currently).</p>
+
+<p>My first approach was to try and automate something using <a href="https://www.sno.phy.queensu.ca/~phil/exiftool/">ExifTool</a>.  There is also a <code>Node.js</code> library called <a href="https://www.npmjs.com/package/exif-date-infer">exif-date-infer</a>, which seems able to infer the Exif date properties from the photos filename, and write back these properties to the file&hellip; but what is the file name convention used by <code>Whatsapp</code>? when importing the images to my laptop the images seem to be renamed as <code>IMG_XXXX</code>.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/whatsapp/">Whatsapp</a>, 
+            
+                <a href="/tags/exif/">EXIF</a>, 
+            
+                <a href="/tags/tools/">Tools</a>, 
+            
+                <a href="/tags/photos/">Photos</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Whatsapp%20Removes%20Exif%20properties&url=%2fpost%2fwhatsapp-removes-exif%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fwhatsapp-removes-exif%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fwhatsapp-removes-exif%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Whatsapp%20Removes%20Exif%20properties&url=%2fpost%2fwhatsapp-removes-exif%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

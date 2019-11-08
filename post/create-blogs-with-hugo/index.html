@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Create Blogs With Hugo &middot; Antonio Lignan</title>
+        <meta name="description" content="Create a blog using Hugo Hugo is an open source static site generator based on Go
+This is part of my Challenge to make 26 things before 2017 ends. Proudly to say, this is the begining of my journey.
+Quick-start Taken from Hugo&rsquo;s documentation
+Install Hugo and other dependencies Heads-up: you will need Homebrew.
+brew install hugo  Check the version:
+$ hugo version Hugo Static Site Generator v0.29 darwin/amd64 BuildDate: 2017-09-30T22:45:47&#43;02:00  Seems we are good to go!">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Create Blogs With Hugo">
+<meta property="og:description" content="Create a blog using Hugo Hugo is an open source static site generator based on Go
+This is part of my Challenge to make 26 things before 2017 ends. Proudly to say, this is the begining of my journey.
+Quick-start Taken from Hugo&rsquo;s documentation
+Install Hugo and other dependencies Heads-up: you will need Homebrew.
+brew install hugo  Check the version:
+$ hugo version Hugo Static Site Generator v0.29 darwin/amd64 BuildDate: 2017-09-30T22:45:47&#43;02:00  Seems we are good to go!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/create-blogs-with-hugo/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Create Blogs With Hugo</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-09-30" itemprop="datePublished">Sat, Sep 30, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="create-a-blog-using-hugo">Create a blog using Hugo</h1>
+
+<p>Hugo is an open source static site generator based on <a href="https://golang.org">Go</a></p>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge to make 26 things before 2017 ends</a>.  Proudly to say, this is the begining of my journey.</p>
+
+<h2 id="quick-start">Quick-start</h2>
+
+<p>Taken from <a href="https://gohugo.io/getting-started/quick-start/">Hugo&rsquo;s documentation</a></p>
+
+<h3 id="install-hugo-and-other-dependencies">Install Hugo and other dependencies</h3>
+
+<p>Heads-up: you will need <a href="https://brew.sh">Homebrew</a>.</p>
+
+<pre><code class="language-bash">brew install hugo
+</code></pre>
+
+<p>Check the version:</p>
+
+<pre><code class="language-bash">$ hugo version
+Hugo Static Site Generator v0.29 darwin/amd64 BuildDate: 2017-09-30T22:45:47+02:00
+</code></pre>
+
+<p>Seems we are good to go!</p>
+
+<h3 id="create-a-new-site-and-add-a-theme">Create a new site and add a theme</h3>
+
+<p>Let&rsquo;s create a new site called <code>argos-library</code></p>
+
+<p><em>Argos will be a recurrent theme across my development work and digital life</em></p>
+
+<pre><code class="language-bash">$ hugo new site argos-library
+
+Congratulations! Your new Hugo site is created in /Users/antonio.lignan/Desktop/Sandbox/static-blog/argos-library.
+
+Just a few more steps and you're ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the &quot;hugo new theme &lt;THEMENAME&gt;&quot; command.
+2. Perhaps you want to add some content. You can add single files
+   with &quot;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&quot;.
+3. Start the built-in live server via &quot;hugo server&quot;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+</code></pre>
+
+<p>The following structure is created:</p>
+
+<pre><code class="language-bash">.
+├── archetypes  : preconfigured front matter fields
+├── config.toml : configuration file in TOML format
+├── content     : holds the sections (content/blog, etc.) and all content of the website
+├── data        : store configuration files used by Hugo
+├── layouts     : .html templates which defines how the site is rendered
+├── static      : static content of the site (CSS, JavaScript, images, etc.)
+└── themes      : holds the pre-defined themes
+</code></pre>
+
+<p>Initialize a git repository inside</p>
+
+<pre><code class="language-bash">cd argos-library
+git init
+</code></pre>
+
+<p>As suggested above, the next step is to include a <code>theme</code>.  Hugo has <a href="https://themes.gohugo.io/">an extensive list of available themes</a>.</p>
+
+<p>I chose <a href="https://themes.gohugo.io/hyde/">Hyde</a> theme to start with.  I like clean and minimal designs, but I like having a static sidebar as navigation reference, which I will probably end up using for random messages&hellip; whatever&hellip;</p>
+
+<p>Initialize the theme repository in the <code>themes</code> folder as a submodule:</p>
+
+<pre><code class="language-bash">git submodule add https://github.com/spf13/hyde.git themes/hyde
+</code></pre>
+
+<p>And enable <code>hyde</code> as the default theme:</p>
+
+<pre><code class="language-bash">echo 'theme = &quot;hyde&quot;' &gt;&gt; config.toml
+</code></pre>
+
+<p>The <code>config.toml</code> should look like this:</p>
+
+<pre><code class="language-bash">baseURL = &quot;http://example.org/&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;Antonio Lignan's blog&quot;
+theme = &quot;hyde&quot;
+</code></pre>
+
+<p>I changed the <code>title</code> obviously, no further modifications at this stage.</p>
+
+<h2 id="adding-a-new-post">Adding a new post</h2>
+
+<p>Creating a new page is surprisingly easy, just run the following:</p>
+
+<pre><code class="language-bash">hugo new blog/create-blogs-with-hugo.md
+</code></pre>
+
+<p>Which as expected is this very own page.</p>
+
+<p>The file was created at <code>content/blog/create-blogs-with-hugo.md</code>.</p>
+
+<p>The newly created file had the following content:</p>
+
+<pre><code>---
+title: &quot;Create Blogs With Hugo&quot;
+date: 2017-09-30T23:41:11+02:00
+draft: true
+---
+</code></pre>
+
+<p>As here is the first mention of <code>draft</code> (self-explanatory), let&rsquo;s take a step into <code>front matter</code>.  This is a concept from <code>Jekyll</code> (I think&hellip;), basically any file with a <code>YAML</code> front matter block is processed as a special file.  The block shown above must be placed in the beginning of the file and keep the triple-dashed lines.</p>
+
+<p>Inside the <code>YAM</code> block variables (custom or predefined) can be set.  Hugo accepts <code>TOML</code>, <code>YAML</code> and <code>JSON</code> as front matter formats, each with its own identifying tokens.</p>
+
+<p>Some of the basics predefined front matter variables are:</p>
+
+<ul>
+<li><code>draft</code>: if <code>true</code>, the content will not be rendered (unless <code>--buildDrafts</code> is used)</li>
+<li><code>title</code>: self-explanatory</li>
+<li><code>date</code>: self-explanatory and auto-populated</li>
+<li><code>keywords</code>: content meta keyword</li>
+</ul>
+
+<h2 id="running-the-blog-locally">Running the blog locally</h2>
+
+<p>To start the server just run:</p>
+
+<pre><code class="language-bash">$ hugo server -D
+
+Started building sites ...
+
+Built site for language en:
+1 of 1 draft rendered
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+total in 4 ms
+Watching for changes in /Users/antonio.lignan/Desktop/Sandbox/static-blog/argos-library/{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+</code></pre>
+
+<p>The <code>-D</code> is the equivalent of <code>--buildDrafts</code>.  The page should be accessible over the <a href="http://localhost:1313/">http://localhost:1313</a> address.</p>
+
+<p>Images should be put inside the <code>/static</code> folder in any sub-folder as preferred.  I opted to adopt a naming convention based on the title of the post, and images are names as an increasing number.  My first image was <code>00.png</code> stored in <code>static/img/create-blogs-with-hugo</code>, just showing how the blog was rendered locally:</p>
+
+<p><a href="/img/create-blogs-with-hugo/00.png"><img src="/img/create-blogs-with-hugo/00.png" alt="" /></a></p>
+
+<p>Note the way to add images to the pages is to use <code>Markdown</code> tags as usual.  As what link to use, regardless the images are added to the <code>/static</code> folder, by default the content of this folder is dumped at root.  My image above was linked to <code>/img/create-blogs-with-hugo/00.png</code>, this is the complete path to the image once rendered:</p>
+
+<pre><code class="language-bash">http://localhost:1313/img/create-blogs-with-hugo/00.png
+</code></pre>
+
+<p><strong><em>Update:</em></strong> I changed the theme and used <a href="https://themes.gohugo.io/ghostwriter/">Ghostwriter</a></p>
+
+<h2 id="minor-tweaks">Minor tweaks</h2>
+
+<p>Before committing the first version, first add a <code>gitignore</code> file:</p>
+
+<pre><code class="language-bash"># Hugo default output directory
+/public
+
+# Other files and folders not wanted
+.DS_Store
+</code></pre>
+
+<p>The blog sources are in <a href="https://github.com/alignan/argos-library">Github</a></p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<ul>
+<li><a href="https://alignan.github.io/2017/10/02/deploy-hugo-to-github/">Deploy the blog in Github pages (done!)</a></li>
+<li>Other tweaks and improvements to the template and formatting</li>
+</ul>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/challenge-2017/">Challenge 2017</a>, 
+            
+                <a href="/tags/blog/">Blog</a>, 
+            
+                <a href="/tags/hugo/">Hugo</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Create%20Blogs%20With%20Hugo&url=%2fpost%2fcreate-blogs-with-hugo%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fcreate-blogs-with-hugo%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fcreate-blogs-with-hugo%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Create%20Blogs%20With%20Hugo&url=%2fpost%2fcreate-blogs-with-hugo%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

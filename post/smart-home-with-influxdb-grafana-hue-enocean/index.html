@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2) &middot; Antonio Lignan</title>
+        <meta name="description" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2) This is part of my Challenge to make 26 things before 2018 ends.
+I wanted to eat my own dog food, scratch my own itch, follow the preaching book&hellip; in short, to add some of the technologies and concepts I use at work in my home.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2)">
+<meta property="og:description" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2) This is part of my Challenge to make 26 things before 2018 ends.
+I wanted to eat my own dog food, scratch my own itch, follow the preaching book&hellip; in short, to add some of the technologies and concepts I use at work in my home.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/smart-home-with-influxdb-grafana-hue-enocean/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2)</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-11-02" itemprop="datePublished">Fri, Nov 2, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="smart-home-with-enocean-sensors-philips-hue-and-weather-underground-running-on-influxdb-and-grafana-in-a-raspberry-pi-part-1-of-2">Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 1 of 2)</h1>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do">Challenge to make 26 things before 2018 ends</a>.</p>
+
+<p>I wanted to eat my own dog food, scratch my own itch, follow the preaching book&hellip; in short, to add some of the technologies and concepts I use at work in my home.</p>
+
+<h2 id="my-use-cases">My use cases</h2>
+
+<p>I started to collect so-called <code>smart devices</code> at home, I wanted to put these to a good use, and avoid having to use a plethora of applications to control or visualize its information, but centralize everything into something simple.  In short, I needed to:</p>
+
+<ul>
+<li>Display the weather conditions (as my wife always ask me what is the temperature outside, or if it will rain later&hellip; I felt silly shouting at <a href="https://www.amazon.com/Amazon-Echo-And-Alexa-Devices/b?ie=UTF8&amp;node=9818047011">Alexa</a> from my bedroom&hellip;)</li>
+<li>Set the Philip Hue light bulbs to its previous color and bright when powering back on (by default the lights go to an awful warm color when powered back on)</li>
+<li>Compare the indoor temperature of the bedrooms vs. outside</li>
+<li>Depending on the weather conditions change the light bulb colors and brightness</li>
+<li>Know when it is time to ventilate the flat (based on CO2 level)</li>
+</ul>
+
+<p>I wanted to have a local dashboard to display the information above, without needing Internet access, available via my laptop, mobile phones, and over a dedicated screen.</p>
+
+<p>The architecture looks as following:</p>
+
+<p><a href="/img/smart-home-with-influxdb-grafana-hue-enocean/00.png"><img src="/img/smart-home-with-influxdb-grafana-hue-enocean/00.png" alt="" /></a></p>
+
+<p>If you want to skip the next sections, here&rsquo;s the link to the project repository:</p>
+
+<p><a href="https://github.com/alignan/home-improvements">https://github.com/alignan/home-improvements</a></p>
+
+<h2 id="setting-up-the-raspberry-pi-and-installing-the-dependencies">Setting up the Raspberry Pi and installing the dependencies</h2>
+
+<p>My current version:</p>
+
+<pre><code class="language-bash">$ cat /etc/os-release
+PRETTY_NAME=&quot;Raspbian GNU/Linux 9 (stretch)&quot;
+NAME=&quot;Raspbian GNU/Linux&quot;
+VERSION_ID=&quot;9&quot;
+VERSION=&quot;9 (stretch)&quot;
+ID=raspbian
+ID_LIKE=debian
+HOME_URL=&quot;http://www.raspbian.org/&quot;
+SUPPORT_URL=&quot;http://www.raspbian.org/RaspbianForums&quot;
+BUG_REPORT_URL=&quot;http://www.raspbian.org/RaspbianBugs&quot;
+</code></pre>
+
+<h3 id="install-influxdb">Install influxDB</h3>
+
+<pre><code class="language-bash">$ curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/os-release
+
+$ test $VERSION_ID = &quot;9&quot; &amp;&amp; echo 'deb https://repos.influxdata.com/debian stretch stable' | sudo tee /etc/apt/sources.list.d/influxdb.list.
+
+$ sudo apt-get update &amp;&amp; sudo apt-get install influxdb
+$ sudo service influxdb start
+</code></pre>
+
+<p>Check version by running:</p>
+
+<pre><code class="language-bash">$ influx
+Connected to http://localhost:8086 version 1.6.3
+InfluxDB shell version: 1.6.3
+&gt; exit
+</code></pre>
+
+<h3 id="install-grafana">Install Grafana</h3>
+
+<pre><code class="language-bash">$ sudo apt-get install apt-transport-https curl
+$ curl -sL https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+$ echo 'deb https://dl.bintray.com/fg2it/deb stretch main' | sudo tee -a /etc/apt/sources.list.d/grafana.list
+$ sudo apt-get update
+$ sudo apt-get install grafana
+$ sudo /bin/systemctl enable grafana-server
+
+Synchronizing state of grafana-server.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable grafana-server
+Created symlink /etc/systemd/system/multi-user.target.wants/grafana-server.service → /usr/lib/systemd/system/grafana-server.service.
+
+</code></pre>
+
+<h2 id="integrating-the-philips-hue-light-bulbs">Integrating the Philips Hue light bulbs</h2>
+
+<p>I googled around and found a Python wrapper for the Philips Hue API, the <a href="https://github.com/quentinsf/qhue">qhue</a> fetches and compiles the API into a python module.</p>
+
+<p>Mainly, I&rsquo;m just replacing the default factory light settings to something preferred.  The script checks periodically for the light settings and replaces if default settings are found.</p>
+
+<pre><code class="language-bash">&quot;Main light living room&quot;: {
+        &quot;default&quot;: {
+            &quot;bri&quot;: 254,
+            &quot;ct&quot;: 156,
+            &quot;sat&quot;: 251,
+            &quot;hue&quot;: 34069
+        },
+        &quot;unwanted&quot;: {
+            &quot;hue&quot;: 14988,
+            &quot;ct&quot;: 366,
+            &quot;sat&quot;: 141
+        }
+    },
+</code></pre>
+
+<p>Later I&rsquo;m planing to refactor this with an event-based approach, but it does the work at expected.  The other alternative was to pay for an phone application just to set the lights to its previous state, as seems the light bulbs do not have on-board flash memory, and the Hub doesn&rsquo;t store light settings&hellip; my solution is good at the moment.</p>
+
+<p>My next step was to somehow reflect in the light bulbs the weather conditions (e.g. dark blue if below 10°C, purple-ish if raining, etc.).</p>
+
+<p>As the above JSON schema, I defined a mapping of light settings to weather states (as defined by the Weather Underground API):</p>
+
+<pre><code class="language-bash">{
+	&quot;Drizzle&quot;: &quot;default&quot;,
+	&quot;Light Drizzle&quot;: &quot;default&quot;,
+	&quot;Heavy Drizzle&quot;: &quot;default&quot;,
+	&quot;Rain&quot;: &quot;default&quot;,
+	&quot;Light Rain&quot;: &quot;default&quot;,
+	&quot;Heavy Rain&quot;: &quot;default&quot;,
+	&quot;Snow&quot;: &quot;default&quot;,
+	&quot;Light Snow&quot;: &quot;default&quot;,
+	&quot;Heavy Snow&quot;: &quot;default&quot;,
+	(...)
+</code></pre>
+
+<p>I&rsquo;m retrieving the following weather information:</p>
+
+<ul>
+<li>ambient temperature</li>
+<li>ambient humidity</li>
+<li>weather status</li>
+<li>atmospheric pressure</li>
+<li>wind speed and gust</li>
+</ul>
+
+<p>I selected a weather station just across my street</p>
+
+<pre><code class="language-python">wunderground_url = 'http://api.wunderground.com/api/{0}/geolookup/conditions/q'.format(wunderground_api['wunderground'])
+
+r = requests.get(wunderground_url + WUNDERSTATION_URL).json()
+
+# build my dictionary array to write to database
+meas = {}
+meas['berlin_temperature'] = round(float(r['current_observation']['temp_c']), 2)
+meas['berlin_humidity'] = round(float(r['current_observation']['relative_humidity'][:-1]), 2)
+meas['berlin_temperature_feels'] = round(float(r['current_observation']['feelslike_c']), 2)
+meas['weather_state'] = r['current_observation']['weather']
+meas['berlin_pressure'] = round(float(r['current_observation']['pressure_mb']), 2)
+meas['berlin_wind_speed_kph'] = round(float(r['current_observation']['wind_kph']), 2)
+meas['berlin_wind_gust_kph'] = round(float(r['current_observation']['wind_gust_mph']) * 1.609344, 2)
+
+</code></pre>
+
+<p>To make the python application to run as a service:</p>
+
+<pre><code class="language-bash">$ cat /etc/systemd/user/philips_hue.service /lib/systemd/system/philips_hue.service 
+[Unit]
+Description=Philips hue Service
+After=multi-user.target
+
+[Service]
+Type=idle
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/home-improvements/venv/bin/python /home/pi/home-improvements/philips_hue_devices.py
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>Enable and run:</p>
+
+<pre><code class="language-bash">$ sudo systemctl enable philips_hue.service
+Created symlink /etc/systemd/system/multi-user.target.wants/philips_hue.service → /lib/systemd/system/philips_hue.service
+
+$ sudo systemctl start philips_hue.service
+</code></pre>
+
+<p>To check the logs for errors and others:</p>
+
+<pre><code class="language-bash">$ journalctl -u philips_hue.service
+</code></pre>
+
+<h2 id="configure-the-hdmi-monitor-and-graphical-mode">Configure the HDMI monitor and graphical mode</h2>
+
+<p>In the <code>config.txt</code> file (boot partition):</p>
+
+<pre><code class="language-bash"># uncomment if hdmi display is not detected and composite is being output
+hdmi_force_hotplug=1
+
+# uncomment to force a specific HDMI mode (this will force VGA)
+hdmi_group=2
+hdmi_mode=4
+
+# uncomment to force a HDMI mode rather than DVI. This can make audio work in
+# DMT (computer monitor) modes
+hdmi_drive=2
+
+# uncomment to increase signal to HDMI, if you have interference, blanking, or
+# no display
+config_hdmi_boost=4
+</code></pre>
+
+<p>In the <code>raspi-config</code> utility also configure the <code>Pi</code> to run directly in <code>Desktop mode</code> (via the <code>Boot Options</code>), also in the <code>/etc/lightdm/lightdm.conf</code> (or use <code>lightdm-set-defaults</code> to avoid modifying the file directly).</p>
+
+<pre><code class="language-bash">autologin-user=pi
+autologin-user-timeout=0
+</code></pre>
+
+<p>And then some:</p>
+
+<pre><code class="language-bash">$ sudo apt-get install --no-install-recommends xserver-xorg -y
+$ sudo apt-get install --no-install-recommends raspberrypi-ui-mods lxterminal gvfs -y
+$ sudo apt-get install lxde --fix-missing
+$ sudo apt-get install xinit
+$ startx
+</code></pre>
+
+<h3 id="configure-kiosk-mode">Configure Kiosk mode</h3>
+
+<p>Disable screen saver or blanking, from <a href="https://www.ceos3c.com/misc/disable/">this page</a> add the lines below to the <code>~/.config/lxsession/LXDE-pi/autostart</code> file:</p>
+
+<pre><code class="language-bash">@xset s off
+@xset -dpms
+@xset s noblank
+@unclutter
+</code></pre>
+
+<p>At this point I avoided researching and went with <a href="https://die-antwort.eu/techblog/2017-12-setup-raspberry-pi-for-kiosk-mode/">Google&rsquo;s top results</a>:</p>
+
+<pre><code class="language-bash">sudo apt-get install --no-install-recommends chromium-browser
+</code></pre>
+
+<p>Configure <code>OpenBox</code> in <code>/etc/xdg/openbox/autostart</code>:</p>
+
+<pre><code class="language-bash"># Disable any form of screen saver / screen blanking / power management
+xset s off
+xset s noblank
+xset -dpms
+
+# Allow quitting the X server with CTRL-ATL-Backspace
+setxkbmap -option terminate:ctrl_alt_bksp
+
+# Start Chromium in kiosk mode
+sed -i 's/&quot;exited_cleanly&quot;:false/&quot;exited_cleanly&quot;:true/' ~/.config/chromium/'Local State'
+sed -i 's/&quot;exited_cleanly&quot;:false/&quot;exited_cleanly&quot;:true/; s/&quot;exit_type&quot;:&quot;[^&quot;]\+&quot;/&quot;exit_type&quot;:&quot;Normal&quot;/' ~/.config/chromium/Default/Preferences
+chromium-browser --disable-infobars --kiosk 'http://your-url-here'
+</code></pre>
+
+<p>Plus this tweak to <code>.bashrc</code> to launch the <code>X server</code> at boot without the cursor:</p>
+
+<pre><code class="language-bash">[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; startx -- -nocursor
+</code></pre>
+
+<p>This was not entirely successful, in <a href="https://medium.com/@alexjv89/setting-up-a-dashboard-on-raspberry-pi-4e6e2e37ddbb">this other guide</a> I tried the following steps:</p>
+
+<pre><code class="language-bash">$ mkdir /home/pi/.config/autostart
+$ nano /home/pi/.config/autostart/kiosk.desktop
+
+[Desktop Entry]
+Type=Application
+Name=Kiosk
+Exec=/home/pi/kiosk.sh
+X-GNOME-Autostart-enabled=true
+
+$ nano /home/pi/kiosk.sh
+
+#!/bin/bash
+# Run this script in display 0 - the monitor
+export DISPLAY=:0
+# Hide the mouse from the display
+unclutter &amp;
+# If Chrome crashes (usually due to rebooting), clear the crash flag so we don't have the annoying warning bar
+sed -i 's/&quot;exited_cleanly&quot;:false/&quot;exited_cleanly&quot;:true/' /home/pi/.config/chromium/Default/Preferences
+sed -i 's/&quot;exit_type&quot;:&quot;Crashed&quot;/&quot;exit_type&quot;:&quot;Normal&quot;/' /home/pi/.config/chromium/Default/Preferences
+# Run Chromium and open tabs
+chromium-browser --kiosk --app=https://grafana-url
+</code></pre>
+
+<p>To run <code>playlist mode</code> (multiple dashboards rotated after a giving period), replace the url for:</p>
+
+<pre><code class="language-bash">chromium-browser --kiosk --app=http://grafana-url/playlists/play/1?kiosk
+</code></pre>
+
+<p>When <code>kiosk.sh</code> runs now shows Grafana&rsquo;s login page, we want this to be automated - I prefer to use the proxy options, let&rsquo;s check other possibilities.</p>
+
+<p>Configure <code>Grafana</code> to avoid login in <code>/etc/grafana/grafana.ini</code>:</p>
+
+<pre><code class="language-bash">[auth]
+# Set to true to disable (hide) the login form, useful if you use OAuth, defaults to false
+disable_login_form = true 
+
+[auth.anonymous]
+# enable anonymous access
+enabled = true 
+# specify organization name that should be used for unauthenticated users
+org_name = Main Org.
+# specify role for unauthenticated users
+org_role = Editor
+</code></pre>
+
+<p>For a better visibility, I changed the resolution to <code>1440 x 900 (60Hz)</code> using the <code>raspi-config</code> utility.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Smart%20Home%20with%20enOcean%20sensors%2c%20Philips%20Hue%20and%20Weather%20underground%2c%20running%20on%20influxDb%20and%20Grafana%20in%20a%20Raspberry%20Pi%20%28Part%201%20of%202%29&url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Smart%20Home%20with%20enOcean%20sensors%2c%20Philips%20Hue%20and%20Weather%20underground%2c%20running%20on%20influxDb%20and%20Grafana%20in%20a%20Raspberry%20Pi%20%28Part%201%20of%202%29&url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

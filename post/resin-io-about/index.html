@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>About Resin.io and ResinOS &middot; Antonio Lignan</title>
+        <meta name="description" content="Understanding Resin and ResinOS I felt I needed to write this post about Resin.io, as I was jumping directly into deploying and building in a Raspberry Pi (see this post), just jumping from one tutorial to the next.
+It is good to pace down, understand, and then go full speed.
+Resin.io  Resin.io makes it simple to deploy, update, and maintain code running on remote devices. We are bringing the web development and deployment workflow to hardware, using tools like git and Docker to allow you to seamlessly update all your embedded linux devices in the wild.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="About Resin.io and ResinOS">
+<meta property="og:description" content="Understanding Resin and ResinOS I felt I needed to write this post about Resin.io, as I was jumping directly into deploying and building in a Raspberry Pi (see this post), just jumping from one tutorial to the next.
+It is good to pace down, understand, and then go full speed.
+Resin.io  Resin.io makes it simple to deploy, update, and maintain code running on remote devices. We are bringing the web development and deployment workflow to hardware, using tools like git and Docker to allow you to seamlessly update all your embedded linux devices in the wild.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/resin-io-about/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">About Resin.io and ResinOS</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-10-22" itemprop="datePublished">Sun, Oct 22, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="understanding-resin-and-resinos">Understanding Resin and ResinOS</h1>
+
+<p>I felt I needed to write this post about <a href="https://resinos.io">Resin.io</a>, as I was jumping directly into deploying and building in a Raspberry Pi (see <a href="/post/monitoring-plant-sensors/">this post</a>), just jumping from one tutorial to the next.</p>
+
+<p>It is good to pace down, understand, and then go full speed.</p>
+
+<h2 id="resin-io">Resin.io</h2>
+
+<blockquote>
+<p>Resin.io makes it simple to deploy, update, and maintain code running on remote devices. We are bringing the web development and deployment workflow to hardware, using tools like git and Docker to allow you to seamlessly update all your embedded linux devices in the wild. We handle cross-compilation, device monitoring, VPNs, and log collection, so you can focus on your product and not the infrastructure.</p>
+</blockquote>
+
+<p>Highlights from <a href="https://docs.resin.io/understanding/understanding-code-deployment/">How the code is deployed</a>:</p>
+
+<ul>
+<li>Changes tracked and deployed from a Github repository</li>
+<li>Each Resin.io application as an unique remote repository associated</li>
+<li>Changes in <code>master</code> triggers a remote update on devices</li>
+<li>Changes compiled in a cross-compiler docker container (i.e. <code>ARMv6</code> for the Raspberry Pi)</li>
+<li>Compiler container updates the docker registry</li>
+<li>Possible to include a <code>Dockerfile</code> to further tune the process</li>
+</ul>
+
+<h2 id="resinos">ResinOS</h2>
+
+<blockquote>
+<p>ResinOS is an operating system optimised for running Docker containers on embedded devices</p>
+</blockquote>
+
+<p>This is the other endpoint - the device side who handles the updates.</p>
+
+<p>Highlights from <a href="https://docs.resin.io/understanding/understanding-devices/2.0.0/">What is ResinOS</a>:</p>
+
+<ul>
+<li>Linux oriented</li>
+<li>Based on the <a href="https://www.yoctoproject.org/">Yocto Framework</a></li>
+<li><code>2.0.0+rev2</code> recommended for production</li>
+<li><code>2.0.0+rev2-dev</code> is used for active development.  The <a href="https://docs.resin.io/development/local-mode/">local mode</a> (to build and sync in a local network) is only available in this mode</li>
+<li>Docker socket exposed on via port <code>2377</code>, which allows <code>resin local push</code> to do remote Docker builds on the target device</li>
+<li>8 MB journald RAM buffer to avoid wear on the flash storage</li>
+<li>Stateless rootFS (Read-Only system), to keep configuration information a persistent partition is maintained</li>
+<li>However, persistent storage can be enabled by changing <code>&quot;persistentLogging&quot;: true</code> in the <code>config.json</code> file</li>
+<li><code>resin-boot</code> (as used in the Raspberry Pi) is a FAT32 partition for device boot configuration.  The <code>config.json</code> file used by ResinOS is located here</li>
+<li>Other partitions (read-only):
+
+<ul>
+<li><code>resin-rootA</code>: holds read-only root filesystem</li>
+<li><code>resin-rootB</code>: empty partition that is only used when the rootfs is to be updated</li>
+<li><code>resin-state</code>: holds persistent data</li>
+<li><code>resin-data</code>: holds downloaded Docker images</li>
+</ul></li>
+</ul>
+
+<p>ResinOS is composed by the <a href="https://docs.resin.io/understanding/understanding-devices/2.0.0/#resinos-components">following services</a>:</p>
+
+<ul>
+<li><code>The resin.io supervisor</code>:  a lightweight container that manages applications and communicates with Resin.io servers</li>
+<li><code>Systemd</code>: arrgh</li>
+<li><code>Docker Engine</code>: a lightweight container runtime to build and run linux containers on resinOS</li>
+<li><code>NetworkManager and ModemManager</code>: manage connection to the Internet, either via ethenet, wifi or cellular modem.  A <code>system-connections</code> folder in the boot partition allows to replicate content in <code>/etc/NetworkManager/system-connections</code></li>
+<li><code>DNSmasq</code>: manage the nameservers</li>
+<li><code>Avahi</code>: advertises the device in the local network</li>
+<li><code>OpenVPN server</code>: disabled by default, must be configured and activated</li>
+</ul>
+
+<p>The <code>BSP</code> for each platform is built using <code>poki/yocto</code> meta packages, an example of how it is built for the Raspberry Pi is shown <a href="https://github.com/resin-os/resin-raspberrypi/blob/master/layers/meta-resin-raspberrypi/conf/samples/bblayers.conf.sample">Here</a></p>
+
+<p>The following language support is available: Nodejs, Python, Go and Java.</p>
+
+<h2 id="wrap-up">Wrap-up</h2>
+
+<p>That&rsquo;s it - I just wanted to grab the basic concepts as I go through Resin.io and Docker.  To run simple scripts (i.e. run a typical IoT sensor-application) seems an overkill, however it is practical as reduce the hurdles of device management, and it makes a lot of sense if scaling-up your application.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/iot/">IoT</a>, 
+            
+                <a href="/tags/resin/">Resin</a>, 
+            
+                <a href="/tags/raspberry-pi/">Raspberry Pi</a>, 
+            
+                <a href="/tags/docker/">Docker</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=About%20Resin.io%20and%20ResinOS&url=%2fpost%2fresin-io-about%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fresin-io-about%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fresin-io-about%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=About%20Resin.io%20and%20ResinOS&url=%2fpost%2fresin-io-about%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

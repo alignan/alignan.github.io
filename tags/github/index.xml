@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Antonio Lignan&#39;s blog</title>
+    <link>/tags/github/</link>
+    <description>Recent content in Github on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 21 Oct 2017 23:49:35 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>This Blog</title>
+      <link>/projects/this-blog/</link>
+      <pubDate>Sat, 21 Oct 2017 23:49:35 +0200</pubDate>
+      
+      <guid>/projects/this-blog/</guid>
+      <description>This blog Creating an improving this blog is itself a project. Although I prefer to keep day to day progress in separate blog posts, I thought it would be good to keep track of the projects&amp;rsquo; evolution in a single placeholder - tags are also helpful and included, but this way I can have a better index for my own later reference.
+Some specific about the blog, like minimum improvements like adding tags, categories, or internal links, are not necessarily tracked in a post, as I already made publicly available the blog&amp;rsquo;s sources - peep as you need!</description>
+    </item>
+    
+  </channel>
+</rss>

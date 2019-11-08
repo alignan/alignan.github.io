@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>An IoT Raspberry Pi powered plant monitoring system &middot; Antonio Lignan</title>
+        <meta name="description" content="Monitoring my new plant using sensors and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This type of project is nothing new in the Makersphere, using environmental sensors with the Raspberry Pi (and Arduinos, ESP8266, etc.) has been done since it&rsquo;s early beginnings, and it is perhaps one of the most implemented use cases.
+Then what is new?
+Likely nothing surprisingly, however, I would attempt to take this above the normal &ldquo;demo and forget&rdquo; existing setups, and create something with a product-oriented approach.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="An IoT Raspberry Pi powered plant monitoring system">
+<meta property="og:description" content="Monitoring my new plant using sensors and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This type of project is nothing new in the Makersphere, using environmental sensors with the Raspberry Pi (and Arduinos, ESP8266, etc.) has been done since it&rsquo;s early beginnings, and it is perhaps one of the most implemented use cases.
+Then what is new?
+Likely nothing surprisingly, however, I would attempt to take this above the normal &ldquo;demo and forget&rdquo; existing setups, and create something with a product-oriented approach.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/monitoring-plant-sensors/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An IoT Raspberry Pi powered plant monitoring system</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-10-22" itemprop="datePublished">Sun, Oct 22, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="monitoring-my-new-plant-using-sensors-and-the-raspberry-pi">Monitoring my new plant using sensors and the Raspberry Pi</h1>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge to make 26 things before 2017 ends</a>.</p>
+
+<p>This type of project is nothing new in the <em>Makersphere</em>, using environmental sensors with the Raspberry Pi (and Arduinos, ESP8266, etc.) has been done since it&rsquo;s early beginnings, and it is perhaps one of the most implemented use cases.</p>
+
+<p>Then what is new?</p>
+
+<p>Likely nothing surprisingly, however, I would attempt to take this above the normal &ldquo;demo and forget&rdquo; existing setups, and create something with a product-oriented approach.</p>
+
+<p>Notice the title of this post: monitoring.  I will write about watering automation in a separate post, as first it would be preferred to understand what would my plant needs.</p>
+
+<h2 id="why-a-raspberry-pi">Why a Raspberry Pi?</h2>
+
+<p>Why not? I have used many embedded platforms in the past, thus extracting data from sensors and forwarding back to another device/server in the sky for post-processing is not trivial&hellip; I wanted to do something different, like deploy from <a href="https://resin.io">Resin.io</a>, <a href="https://www.docker.com">Docker</a> (see <a href="https://github.com/alignan/things-to-do/blob/master/README.md">my challenge</a>), or even expand and build more features like adding a local webserver, etc.</p>
+
+<p>As this is likely going to be a work in progress with room for experimentation, the <a href="https://www.raspberrypi.org">Raspberry Pi</a> seems like a good choice.</p>
+
+<p>Pro tip: I can even kick <a href="https://retropie.org.uk">RetroPie</a> while my plant is watered auto-magically.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Most of the requirements were outlined in <a href="/post/my-new-bonsai/">My new Bonsai</a> blog post, from which the following are extracted:</p>
+
+<ul>
+<li>Measure the humidity of the soil</li>
+<li>Measure the ambient temperature, humidity and why not, atmospheric pressure</li>
+<li>Measure the water level after in the saucer (the one collecting the excess of water at the bottom)</li>
+</ul>
+
+<h2 id="components">Components</h2>
+
+<p>The following are the list of components to be integrated to the Raspberry Pi.</p>
+
+<h3 id="atmospheric-sensor-bundle">Atmospheric sensor-bundle</h3>
+
+<p>The <a href="https://shop.mikroe.com/weather-click">Weather click from MikroElektronika</a> features the <a href="https://download.mikroe.com/documents/datasheets/BST-BME280_DS001-11.pdf">Bosch BME280</a> sensor, bundling together ambient temperature, humidity and atmospheric pressure over a SPI/I2C communication bus.</p>
+
+<p><a href="/monitoring-plant-sensors/00.jpg"><img src="/img/monitoring-plant-sensors/00.jpg" alt="" /></a></p>
+
+<h3 id="soil-moisture-sensor">Soil moisture sensor</h3>
+
+<p>One of the most common (and cheap) sensors is the <a href="http://wiki.seeed.cc/Grove-Moisture_Sensor/">Grove Moisture sensor</a> (which I happen to have lying around).  It is an analogue sensor, thus an external ADC-to-I2C converter (like the <a href="http://wiki.seeed.cc/Grove-I2C_ADC/">Grove I2C ADC</a>) is needed.</p>
+
+<p>Before connecting to the Raspberry Pi, first some conditioning needs to be done to the sensor, as it will be semi-buried in the soil, it needs to be able to withstand watering without damaging its components.</p>
+
+<p>I removed the 4-pin connector to be able to fit a <a href="https://en.wikipedia.org/wiki/Heat-shrink_tubing">Heat shrink tube</a>, thus trying to water-proof as most as possible:</p>
+
+<p><a href="/monitoring-plant-sensors/01.jpg"><img src="/img/monitoring-plant-sensors/01.jpg" alt="" /></a></p>
+
+<p>Then solder the wires directly on to the pads of the sensor:</p>
+
+<p><a href="/monitoring-plant-sensors/02.jpg"><img src="/img/monitoring-plant-sensors/02.jpg" alt="" /></a></p>
+
+<p>And finally use the heat shrink tube in combination with plastic silicone, to try to prevent water dripping through the cable, at most it will be driven on top of the heat shrinks.</p>
+
+<p><a href="/monitoring-plant-sensors/03.jpg"><img src="/img/monitoring-plant-sensors/03.jpg" alt="" /></a></p>
+
+<h3 id="raspberry-pi-and-resin-io">Raspberry Pi and Resin.io</h3>
+
+<p>I had a Raspberry Pi with a <a href="https://shop.pimoroni.com/collections/hats/products/pitft-plus-480x320-3-5-tft-touchscreen-for-raspberry-pi-pi-2-and-model-a-b">Pimoroni PiTFT Plus 480x320 3.5&rdquo; touchscreen</a> laying around, as usual.  It uses a RPi 2, I will replace it for a 3 model later at some point (to take advantage of the built-in Wi-Fi and BLE interfaces).</p>
+
+<p><a href="/monitoring-plant-sensors/04.jpg"><img src="/img/monitoring-plant-sensors/04.jpg" alt="" /></a></p>
+
+<p>I wanted to play around with Docker&hellip; and since I have now a Raspberry Pi powered use case seems a good moment as any other.</p>
+
+<p><a href="https://docs.resin.io/raspberrypi3/python/getting-started/">Resin has a nice guide and several OS images</a>, which means I don&rsquo;t have to implement everything from scratch and just focus on the solution.</p>
+
+<p>The good thing about this approach is I can maintain and deploy from a Github repository, saving time from SSH/manually replacing files.</p>
+
+<p>I downloaded the <code>resinOS v2.3.0+rev1.prod</code> (~150Mb download), then flashed to a MicroSD card.</p>
+
+<p><a href="/monitoring-plant-sensors/05.png"><img src="/img/monitoring-plant-sensors/05.png" alt="" /></a></p>
+
+<p>One of the download steps was to provide the network credentials, this saves time as the downloaded image is already provisioned.  Once the MicroSD has been inserted in the RPi and powered on, it will be shown in the Resin.io dashboard.</p>
+
+<p><a href="/monitoring-plant-sensors/06.png"><img src="/img/monitoring-plant-sensors/06.png" alt="" /></a></p>
+
+<p>I will create a new post about Resin.io and remote provisioning.</p>
+
+<p>Instructions on how to access the RPi (locally) are available <a href="/post/configure-rpi-resin-local-access/">Here</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/challenge-2017/">Challenge 2017</a>, 
+            
+                <a href="/tags/bonsai/">Bonsai</a>, 
+            
+                <a href="/tags/iot/">IoT</a>, 
+            
+                <a href="/tags/sensors/">Sensors</a>, 
+            
+                <a href="/tags/raspberry-pi/">Raspberry Pi</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=An%20IoT%20Raspberry%20Pi%20powered%20plant%20monitoring%20system&url=%2fpost%2fmonitoring-plant-sensors%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fmonitoring-plant-sensors%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fmonitoring-plant-sensors%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=An%20IoT%20Raspberry%20Pi%20powered%20plant%20monitoring%20system&url=%2fpost%2fmonitoring-plant-sensors%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

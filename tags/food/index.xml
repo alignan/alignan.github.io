@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Food on Antonio Lignan&#39;s blog</title>
+    <link>/tags/food/</link>
+    <description>Recent content in Food on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 28 Oct 2017 22:38:07 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/food/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Making an Ajiaco</title>
+      <link>/post/making-an-ajiaco/</link>
+      <pubDate>Sat, 28 Oct 2017 22:38:07 +0200</pubDate>
+      
+      <guid>/post/making-an-ajiaco/</guid>
+      <description>Making an Ajiaco This is part of my Challenge to make 26 things before 2017 ends.
+The Ajiaco: one of the most traditional dishes of Colombia&amp;rsquo;s cuisine.
+
+This dish is heavily served in Bogotá (the capital of Colombia), a thick hot soup (perfect for its cold days), made out of three types of potatoes, chicken, corn and the Galinsoga parviflora herb (called Guasca in Colombia).
+There are tons of recipes on-line, but this type of dish has a strong root in families, thus I&amp;rsquo;m adapting the traditional recipe of my Auntie Cristina (hoping she won&amp;rsquo;t be highly disappointed at me afterwards).</description>
+    </item>
+    
+  </channel>
+</rss>

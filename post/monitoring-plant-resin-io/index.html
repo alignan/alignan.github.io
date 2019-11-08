@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>An IoT Raspberry Pi powered plant monitoring system II &middot; Antonio Lignan</title>
+        <meta name="description" content="Monitoring my plant using sensors, relayr&rsquo;s cloud, resin.io and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This post is a continuation of the Raspberry Pi powered plant monitoring system post, in which I discussed the project requirements, and briefly showed how to flash the resinOS to a Raspberry Pi and waterproof a soil sensor.
+Nothing too fancy by then.
+Now I will show:">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="An IoT Raspberry Pi powered plant monitoring system II">
+<meta property="og:description" content="Monitoring my plant using sensors, relayr&rsquo;s cloud, resin.io and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This post is a continuation of the Raspberry Pi powered plant monitoring system post, in which I discussed the project requirements, and briefly showed how to flash the resinOS to a Raspberry Pi and waterproof a soil sensor.
+Nothing too fancy by then.
+Now I will show:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/monitoring-plant-resin-io/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An IoT Raspberry Pi powered plant monitoring system II</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-12-25" itemprop="datePublished">Mon, Dec 25, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="monitoring-my-plant-using-sensors-relayr-s-cloud-resin-io-and-the-raspberry-pi">Monitoring my plant using sensors, relayr&rsquo;s cloud, resin.io and the Raspberry Pi</h1>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge to make 26 things before 2017 ends</a>.</p>
+
+<p>This post is a continuation of the <a href="/post/monitoring-plant-sensors/">Raspberry Pi powered plant monitoring system post</a>, in which I discussed the project requirements, and briefly showed how to flash the <code>resinOS</code> to a Raspberry Pi and waterproof a soil sensor.</p>
+
+<p>Nothing too fancy by then.</p>
+
+<p>Now I will show:</p>
+
+<ul>
+<li>How I actually deployed the application in <code>Resin.io</code> using <code>Docker</code></li>
+<li>How to connect and read data from the soil moisture sensor (over a ADC to I2C converter) and the atmospheric sensor bundle to the Raspberry Pi</li>
+<li>How to publish the sensor data to the <a href="https://relayr.io">relayr cloud</a> over MQTTS</li>
+</ul>
+
+<p><strong>Disclaimer</strong>: I currently work at relayr GmbH as a technical manager, however for me this project was an opportunity to better understand the company&rsquo;s solution stack, and to put myself in the shoes of my development team towards being a better manager.</p>
+
+<h2 id="the-project">The project</h2>
+
+<p>The project lives at <a href="https://github.com/alignan/kodama-guardian">The Kodama Guardian repository</a>.</p>
+
+<blockquote>
+<p>Kodama (木霊, 木魂 or 木魅) are spirits in Japanese folklore that inhabit trees, similar to the dryads of Greek mythology. The term is also used to denote a tree in which a kodama supposedly resides. The phenomenon known as yamabiko, when sounds make a delayed echoing effect in mountains and valleys, is sometimes attributed to this kind of spirit</p>
+</blockquote>
+
+<p><a href="/monitoring-plant-resin-io/00.png"><img src="/img/monitoring-plant-resin-io/00.png" alt="" /></a></p>
+
+<h3 id="the-docker-machine">The Docker machine</h3>
+
+<p>I just selected one python-based <code>Docker</code> available distro from <code>resin.io</code> registry.  From the <code>Dockerfile</code> the most noticeable requirements are the <code>python-smbus</code> and <code>i2c-tools</code> used to read data from the I2C sensors.  Notice how the <code>i2c-dev</code> drivers has to be loaded prior running the application.</p>
+
+<pre><code class="language-bash"># Base Image
+FROM resin/raspberry-pi2-python
+
+RUN apt-get update &amp;&amp; apt-get install -yq \
+            python-smbus i2c-tools libraspberrypi-bin ca-certificates &amp;&amp; \
+            apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# Copy requirements file first for better cache on later pushes
+COPY ./requirements.txt /requirements.txt 
+
+# The resin.io python-based images has already the following installed:
+# pip, python-dbus, virtualenv, setuptools
+
+# pip install python deps from requirements.txt on the resin.io build server
+RUN pip install -r /requirements.txt
+
+# This will copy all files in our root to the working directory in the container
+COPY . /usr/src/app
+
+# Set our working directory
+WORKDIR /usr/src/app
+
+# switch on systemd init system in container
+ENV INITSYSTEM on
+
+# main.py will run when container starts up on the device
+CMD modprobe i2c-dev &amp;&amp; python src/kodama.py
+</code></pre>
+
+<h3 id="enable-the-i2c-driver-and-increase-the-baudrate">Enable the I2C driver and increase the baudrate</h3>
+
+<p>Add the following to the <code>/boot/config.txt</code> file:</p>
+
+<pre><code class="language-bash">dtparam=i2c_arm=on,i2c_baudrate=400000
+</code></pre>
+
+<h3 id="the-specific-sensor-classes">The specific sensor classes</h3>
+
+<p>I modified <a href="https://bitbucket.org/MattHawkinsUK/rpispy-misc/raw/master/python/bme280.py">Matt Hawkins&rsquo; BME280 example</a> and created a python class.  From <a href="http://wiki.seeed.cc/Grove-I2C_ADC/">Seeedstudio&rsquo;s wiki page</a> I also adapted their example and created a class for the Soil Moisture sensor (over the ADC-to-I2C converter).</p>
+
+<p>The implementation is quite simple as it just returns the sensor value.  At the moment of development I moved some useful checks (like validating the sensor value) to the main application itself, which is not a good idea as it makes the sensor&rsquo;s classes less reusable and clutters the application with more things to check&hellip; as I&rsquo;m writing this post I&rsquo;m creating a new issue to change this later&hellip; see <a href="https://github.com/alignan/kodama-guardian/issues/2">#2</a> and <a href="https://github.com/alignan/kodama-guardian/issues/3">#3</a>.</p>
+
+<h3 id="the-sensor-class">The Sensor class</h3>
+
+<p>The <a href="https://github.com/alignan/kodama-guardian/blob/master/src/measurement.py">measurement</a> class is a wrapper for all sensors.  It allows to check if a reading is valid (boundary limits), check for alerts (thresholds), and return a JSON-formatted message to be published over MQTT according to relayr&rsquo;s expected ontology.</p>
+
+<pre><code class="language-bash">{ &quot;name&quot;:self.name, &quot;value&quot;:self.value, &quot;recorded&quot;:timestamp }
+</code></pre>
+
+<h3 id="the-application">The application</h3>
+
+<p>The main application is implemented in the <code>kodama.py</code> file.  The most relevant parts are the relayr&rsquo;s cloud parameters:</p>
+
+<pre><code class="language-bash">CLOUD_HOST = &quot;cloud-mqtt.relayr.io&quot;
+CLOUD_CERT = &quot;/usr/src/app/src/cacert.pem&quot;
+CLOUD_PORT = 8883
+</code></pre>
+
+<p>And the credentials and other values configured at <code>resin.io</code> admin interface (and exposed as environmental variables at runtime) to avoid publishing in the open:</p>
+
+<pre><code class="language-bash"># Values set in resin.io ENV VARS
+PERIOD_MEAS   = int(os.getenv('PER_MEAS', 30000))
+PERIOD_SLEEP  = int(os.getenv('PER_SLEEP', 1000))
+CLOUD_USER    = os.getenv('RELAYR_USER')
+CLOUD_PASS    = os.getenv('RELAYR_PASS')
+CLOUD_DEV     = os.getenv('RELAYR_DEV')
+CLOUD_ID      = os.getenv('RESIN_DEVICE_UUID')
+</code></pre>
+
+<p><a href="/monitoring-plant-resin-io/01.png"><img src="/img/monitoring-plant-resin-io/01.png" alt="" /></a></p>
+
+<p>The application takes sensor readings every second (as default) and check for alerts, and publishes instant readings every 30 seconds (as default).  Later I will modify the application to publish instead averaged values per hour, along with minimum and maximum values in the same period.  At the moment I chose to publish faster to play with the sensor dashboards (to be shown in a next post).</p>
+
+<pre><code class="language-bash"># Run the scheduled routines
+threading.Timer(PERIOD_MEAS / 1000, measurements_send).start()
+
+# Run the main loop and check for alerts to be published
+while(True):
+
+    soil = soil_hum.read_raw()
+    temp, atmp, humd = bme280.read_all()
+    MQTT_MEASUREMENT_MAP['measurements']['temp'].is_valid(temp)
+    MQTT_MEASUREMENT_MAP['measurements']['humd'].is_valid(humd)
+    MQTT_MEASUREMENT_MAP['measurements']['atmp'].is_valid(atmp)
+    MQTT_MEASUREMENT_MAP['measurements']['soil'].is_valid(soil)
+
+    print &quot;Soil {0}% @ {1}°C {2}%RH {3}hPa&quot;.format(soil, temp, humd, atmp)
+
+    # This will check for alerts to be sent to the cloud
+    check_alerts()
+
+    # Wait a bit
+    time.sleep(PERIOD_SLEEP / 1000)
+</code></pre>
+
+<p>The <code>MQTT_MEASUREMENT_MAP</code> is a dictionary which contains the <code>Sensor</code> objects and keeps track of the published <code>Message ID</code>.</p>
+
+<pre><code class="language-bash">MQTT_MEASUREMENT_MAP = {
+  'measurement_mid' : 0,
+  'measurements' : {
+    'soil' : soil_moist,
+    'temp' : temperature,
+    'humd' : humidity,
+    'atmp' : pressure
+  }
+}
+</code></pre>
+
+<p>Likewise, the <code>MQTT_ALERTS_MAPS</code> is a dictionary which contains the <code>alerts</code> to be sent immediately, including the ones specific to the sensors (thresholds), as well as custom defined ones.  The block below summarizes its construction.</p>
+
+<pre><code class="language-bash"># This is the dictionary to keep ongoing alerts (other than sensor's)
+my_alerts = {
+  'alerts' :
+  {
+    # Sensor failure
+    'sensor_failure' : 'clear',
+    # No water in the tank
+    'no_water'       : 'clear',
+    # Flood likely!
+    'valve_loose'    : 'clear',
+  }
+}
+
+# Copy the alerts dictionary into this map to keep track of alerts state changes
+MQTT_ALERTS_MAP = {
+  'alerts_mid' : 0,
+}
+MQTT_ALERTS_MAP.update(deepcopy(my_alerts))
+
+# Add sensor specific alerts
+for key, value in MQTT_MEASUREMENT_MAP['measurements'].iteritems():
+  if value.low_thr_msg is not None:
+    MQTT_ALERTS_MAP['alerts'][value.low_thr_msg] = value.alerts[value.low_thr_msg]
+  if value.hi_thr_msg is not None:
+    MQTT_ALERTS_MAP['alerts'][value.hi_thr_msg]  = value.alerts[value.hi_thr_msg]
+</code></pre>
+
+<p>The alerts are sent only whenever there is a change in the alert status, either <code>set</code> or <code>clear</code>, to minimize flooding the broker.  One or more alerts can be sent at once in the same message.</p>
+
+<p>The <code>MQTT_COMMAND_MAP</code> contains the supported remote commands received from relayr&rsquo;s cloud, at the moment none are implemented.  The <code>managed_mode</code> is my idea to either let the application decide when to water the plant (based on the sensor readings and last watering date), or only allow the user to decide when to water the plant (either manually by activating an electro-valve over a button or via the <code>water_on</code> command).</p>
+
+<pre><code class="language-bash"># Supported configuration values
+MQTT_COMMAND_MAP = {
+  # Open the sprinkler
+  'water_on'     : None,
+  # Enable or Disable managed mode
+  'managed_mode' : None
+}
+</code></pre>
+
+<p>Here&rsquo;s an example of the application running (logging via the <code>resin.io</code> console):</p>
+
+<p><a href="/monitoring-plant-resin-io/02.png"><img src="/img/monitoring-plant-resin-io/02.png" alt="" /></a></p>
+
+<h2 id="the-wiring">The wiring</h2>
+
+<p>The Raspberry Pi used for the project had already a ribbon cable exposing the following pin-out:</p>
+
+<p><a href="/monitoring-plant-resin-io/03.png"><img src="/img/monitoring-plant-resin-io/03.png" alt="" /></a></p>
+
+<p>I used the Raspberry Pi&rsquo;s I2C and 3.3V pins to connect the atmospheric and soil moisture sensors using a prototyping PCB I had laying around.  Later I will also route two unused GPIOs to connect the electrovalve (to water the plant) and a flow sensor (to detect leaks).  Here&rsquo;s the small PCB (back):</p>
+
+<p><a href="/monitoring-plant-resin-io/04.jpg"><img src="/img/monitoring-plant-resin-io/04.jpg" alt="" /></a></p>
+
+<p>And front:</p>
+
+<p><a href="/monitoring-plant-resin-io/05.jpg"><img src="/img/monitoring-plant-resin-io/05.jpg" alt="" /></a></p>
+
+<p>In the <a href="/post/monitoring-plant-sensors/">previous post</a> the sensor references and datasheets are shown, in case you are wondering about the pin-out.</p>
+
+<p>I keep my plant beside my office&rsquo;s desk at the moment.  As shown in the photo I&rsquo;m currently using a bucket to host my plant as I prefer to water the bonsai using a fine sprinkler for a nice shower.</p>
+
+<p><a href="/monitoring-plant-resin-io/06.jpg"><img src="/img/monitoring-plant-resin-io/06.jpg" alt="" /></a></p>
+
+<h2 id="next-plans">Next plans</h2>
+
+<p>No wonder, the next phase is to actually water the plant.</p>
+
+<p>I have been playing with the following idea: put the plant on top of a water tank with two sections, one to collect all the water leftover from the watering (and even use it as a fish tank), and the other to store clean water.  A submerged pump in the clean water tank would pump the water to a small irrigation hose (around the trunk of the plant) and an elevated sprinkler (to shower from above).  Here&rsquo;s a sketch:</p>
+
+<p><a href="/monitoring-plant-resin-io/07.jpg"><img src="/img/monitoring-plant-resin-io/07.jpg" alt="" /></a></p>
+
+<p>I tested a bilge pump (over 12V), and it has way enough power to supply water to my two watering systems.  It can be easily controlled even by a relay over a RPI&rsquo;s GPIO.</p>
+
+<p><a href="/monitoring-plant-resin-io/08.jpg"><img src="/img/monitoring-plant-resin-io/08.jpg" alt="" /></a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/challenge-2017/">Challenge 2017</a>, 
+            
+                <a href="/tags/bonsai/">Bonsai</a>, 
+            
+                <a href="/tags/resin-io/">Resin IO</a>, 
+            
+                <a href="/tags/relayr/">relayr</a>, 
+            
+                <a href="/tags/iot/">IoT</a>, 
+            
+                <a href="/tags/sensors/">Sensors</a>, 
+            
+                <a href="/tags/raspberry-pi/">Raspberry Pi</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=An%20IoT%20Raspberry%20Pi%20powered%20plant%20monitoring%20system%20II&url=%2fpost%2fmonitoring-plant-resin-io%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fmonitoring-plant-resin-io%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fmonitoring-plant-resin-io%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=An%20IoT%20Raspberry%20Pi%20powered%20plant%20monitoring%20system%20II&url=%2fpost%2fmonitoring-plant-resin-io%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

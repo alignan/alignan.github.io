@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>My IoT Book &middot; Antonio Lignan</title>
+        <meta name="description" content="My IoT book 
+My book: IoT in five Days.
+ This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.
+The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="My IoT Book">
+<meta property="og:description" content="My IoT book 
+My book: IoT in five Days.
+ This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.
+The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/projects/my-iot-book/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">My IoT Book</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<h1 id="my-iot-book">My IoT book</h1>
+
+<p><a href="/img/book/book-cover.gif"><img src="/img/book/book-cover.gif" alt="" /></a></p>
+
+<p><a href="https://github.com/alignan/IPv6-WSN-book">My book: IoT in five Days</a>.</p>
+
+<blockquote>
+<p>This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.</p>
+
+<p>The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications. The Raspberry Pi is used as well.</p>
+</blockquote>
+
+<h2 id="the-history">The history</h2>
+
+<p>This project started out of necessity as everything: I was invited by the <a href="https://www.ictp.it">ICTP</a> (concretely Marco Zennaro and Ermanno Pietrosemoli) to give a workshop on <code>IoT</code>, more specifically a hands-on 4-day marathon on sensors, wireless networking (6LoWPAN and IEEE 802.15.4), and <a href="http://www.contiki-os.org">Contiki OS</a>.</p>
+
+<p>At first, slides were OK, but the aim was to have something easier to replicate and maintain.  The idea evolve to a workbook for my IoT working sessions.  Later on, I was invited to spend two weeks in Trieste, Italy, at the ICTP guest house, to just work on the content of the workbook.  I spent remarkable hours side by side with Marco, figuring out which would be the best angle to take, what examples to include, and how to set up an IPV6 network in the laboratory.</p>
+
+<p>Alvaro Vives (a regular at the ICTP workshops) got involved as IPV6 expert, we began to troubleshoot our deployment on Mikrotik gateways, and try to have a full end-to-end ping going from my <a href="https://github.com/Zolertia/Resources/wiki/The-Z1-mote">Zolertia Z1 motes</a> to Internet over IPv6.  Later on, Alvaro became a contributor of the workbook, and finally we began to shape the chapters and a full book structure.  Marco and Ermanno contributed to the rest.</p>
+
+<h2 id="the-result">The result</h2>
+
+<p>I&rsquo;m proud to say I enjoyed every iteration of the book, alas now it is perhaps outdated as stacks and implementations have evolved, it remains one of the most browsed sources for MQTT and CoAP on 6LoWPAN, Contiki, and some of the basic principles of IoT (the one with the actual power and resource constrains).</p>
+
+<p>I&rsquo;m not planing to keep updating the book, but it has been a good run:</p>
+
+<ul>
+<li>It remained relevant for more than three years,</li>
+<li>It was translated from English to Spanish and French,</li>
+<li>It was used for six international workshops in Italy, Colombia, Argentina and Costa Rica,</li>
+<li>It was printed three times: two English releases and one in Spanish,</li>
+<li>It was used by more than 150 person (workshop attendees) from four continents (Africa, Asia, America and Europe),</li>
+<li>And the sources has been <a href="https://github.com/marcozennaro/IPv6-WSN-book/stargazers">starred 73 times</a> and forked 43 times.</li>
+</ul>
+
+<p>I would gladly do this again: the people I met over the three years are all incredible talented, and were eager to learn - to be honest, likely I learned more from them.  I got to visit Costa Rica and Argentina, took the opportunity to return to Colombia, and return a bit of knowledge to unlock innovation in my home country (and visit my family twice).  I became a regular visitor at the Marconi Lab (at the ICTP), and enjoyed many hours chatting with Marco and Ermanno, proud owner of the <a href="http://www.guinnessworldrecords.com/world-records/longest-broadband-wireless-connection">Guiness record for the longest Broadband Wireless Connection</a>.</p>
+
+<p>I even got to receive a <a href="https://www.youtube.com/watch?v=MsKvJzt1YA0">Video welcome message from Vint Cerf</a>, for our ICTP Workshop about IoT for scientific applications.  Yes, I was a lecturer in this event too.</p>
+
+<p>Marco, Ermanno - Thanks for the fantastic ride.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/iot/">IoT</a>, 
+            
+                <a href="/tags/book/">Book</a>, 
+            
+                <a href="/tags/evangelist/">Evangelist</a>, 
+            
+                <a href="/tags/contiki/">Contiki</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=My%20IoT%20Book&url=%2fprojects%2fmy-iot-book%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fprojects%2fmy-iot-book%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fprojects%2fmy-iot-book%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=My%20IoT%20Book&url=%2fprojects%2fmy-iot-book%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

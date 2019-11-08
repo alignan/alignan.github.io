@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/post/restoring-grafana-db/</loc>
+    <lastmod>2019-11-08T23:33:47+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/disable-screen-blanking-rpi/</loc>
+    <lastmod>2019-11-03T20:37:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/grafana-refresh-options/</loc>
+    <lastmod>2019-11-02T23:15:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/remove-rpi-wizard/</loc>
+    <lastmod>2019-11-02T21:45:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/replacing_wunderground_with_openweather/</loc>
+    <lastmod>2019-03-09T20:42:36+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/my-latest-geocaches-2018/</loc>
+    <lastmod>2018-11-02T21:44:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/home-improvements/</loc>
+    <lastmod>2018-11-02T20:37:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/smart-home-with-influxdb-grafana-hue-enocean-2/</loc>
+    <lastmod>2018-11-02T20:22:16+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/smart-home-with-influxdb-grafana-hue-enocean/</loc>
+    <lastmod>2018-11-02T18:43:04+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/cv/</loc>
+    <lastmod>2018-08-12T16:39:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/compile-vlc-raspberry-stretch/</loc>
+    <lastmod>2018-08-05T23:35:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/raspberry-pi-ssh-hangs/</loc>
+    <lastmod>2018-08-05T19:39:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/trip-to-berlin/</loc>
+    <lastmod>2018-03-30T20:30:59+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/the-2018-challenge/</loc>
+    <lastmod>2018-01-01T16:00:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/my-latest-geocaches/</loc>
+    <lastmod>2017-12-30T23:34:42+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/a-book-about-beers/</loc>
+    <lastmod>2017-12-30T21:05:52+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/monitoring-plant-resin-io/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/karaoke/</loc>
+    <lastmod>2017-12-25T14:34:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/understanding-amazon/</loc>
+    <lastmod>2017-12-02T22:33:23+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/my-daughters-book/</loc>
+    <lastmod>2017-11-26T01:53:16+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/resinio-example-service/</loc>
+    <lastmod>2017-11-25T14:34:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/my-iot-book/</loc>
+    <lastmod>2017-11-19T21:09:51+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/childbook/</loc>
+    <lastmod>2017-11-19T20:57:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/a-review-from-an-intern/</loc>
+    <lastmod>2017-11-03T17:45:52+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/whatsapp-removes-exif/</loc>
+    <lastmod>2017-11-01T22:45:08+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/the-2017-challenge/</loc>
+    <lastmod>2017-11-01T18:13:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/duplicated-in-mac/</loc>
+    <lastmod>2017-10-31T15:08:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/making-an-ajiaco/</loc>
+    <lastmod>2017-10-28T22:38:07+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/resin-io-about/</loc>
+    <lastmod>2017-10-22T22:35:30+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/configure-rpi-resin-local-access/</loc>
+    <lastmod>2017-10-22T20:08:49+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/monitor-automate-plant/</loc>
+    <lastmod>2017-10-22T19:10:16+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/monitoring-plant-sensors/</loc>
+    <lastmod>2017-10-22T17:31:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/this-blog/</loc>
+    <lastmod>2017-10-21T23:49:35+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/my-new-bonsai/</loc>
+    <lastmod>2017-10-21T22:47:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/a-new-company-in-germany/</loc>
+    <lastmod>2017-10-14T09:16:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/deploy-hugo-to-github/</loc>
+    <lastmod>2017-10-02T22:46:12+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2017-10-01T16:39:44+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/create-blogs-with-hugo/</loc>
+    <lastmod>2017-09-30T23:41:11+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/amazon/</loc>
+    <lastmod>2017-12-02T22:33:23+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-11-08T23:33:47+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/barcelona/</loc>
+    <lastmod>2017-12-25T14:34:24+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/beers/</loc>
+    <lastmod>2017-12-30T21:05:52+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/berlin/</loc>
+    <lastmod>2018-03-30T20:30:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/blog/</loc>
+    <lastmod>2017-10-21T23:49:35+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/bonsai/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/book/</loc>
+    <lastmod>2017-11-26T01:53:16+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/books/</loc>
+    <lastmod>2017-12-30T21:05:52+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/challenge-2017/</loc>
+    <lastmod>2018-03-30T20:30:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/challenge-2018/</loc>
+    <lastmod>2018-01-01T16:00:11+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/cloud/</loc>
+    <lastmod>2017-12-02T22:33:23+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/colombia/</loc>
+    <lastmod>2017-10-28T22:38:07+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/company/</loc>
+    <lastmod>2017-10-14T09:16:41+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/contiki/</loc>
+    <lastmod>2017-11-19T21:09:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2017-11-25T14:34:13+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/entrepreneurship/</loc>
+    <lastmod>2017-10-14T09:16:41+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/erin/</loc>
+    <lastmod>2017-11-26T01:53:16+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/evangelist/</loc>
+    <lastmod>2017-11-19T21:09:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/exif/</loc>
+    <lastmod>2017-11-01T22:45:08+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/family/</loc>
+    <lastmod>2018-03-30T20:30:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/food/</loc>
+    <lastmod>2017-10-28T22:38:07+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/friends/</loc>
+    <lastmod>2017-12-25T14:34:24+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/geocache/</loc>
+    <lastmod>2017-12-30T23:34:42+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/germany/</loc>
+    <lastmod>2017-10-14T09:16:41+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/github/</loc>
+    <lastmod>2017-10-21T23:49:35+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/hugo/</loc>
+    <lastmod>2017-10-21T23:49:35+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/interns/</loc>
+    <lastmod>2017-11-03T17:45:52+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/iot/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/job/</loc>
+    <lastmod>2017-11-03T17:45:52+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/karaoke/</loc>
+    <lastmod>2017-12-25T14:34:24+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mac/</loc>
+    <lastmod>2017-10-31T15:08:17+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/management/</loc>
+    <lastmod>2017-11-03T17:45:52+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/openweather/</loc>
+    <lastmod>2019-03-09T20:42:36+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/osx/</loc>
+    <lastmod>2017-10-31T15:08:17+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/personal/</loc>
+    <lastmod>2018-03-30T20:30:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/photos/</loc>
+    <lastmod>2017-11-01T22:45:08+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-11-08T23:33:47+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2018-11-02T20:37:54+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/raspberry-pi/</loc>
+    <lastmod>2018-08-05T23:35:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/relayr/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/resin/</loc>
+    <lastmod>2017-11-25T14:34:13+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/resin-io/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sensors/</loc>
+    <lastmod>2017-12-25T18:54:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ssh/</loc>
+    <lastmod>2018-08-05T19:39:29+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2017-12-02T22:33:23+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tools/</loc>
+    <lastmod>2017-11-01T22:45:08+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/travis/</loc>
+    <lastmod>2017-10-21T23:49:35+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/travis-ci/</loc>
+    <lastmod>2017-10-02T22:46:12+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/vlc/</loc>
+    <lastmod>2018-08-05T23:35:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/watering/</loc>
+    <lastmod>2017-10-22T19:10:16+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/whatsapp/</loc>
+    <lastmod>2017-11-01T22:45:08+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/wunderground/</loc>
+    <lastmod>2019-03-09T20:42:36+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

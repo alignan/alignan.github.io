@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Family on Antonio Lignan&#39;s blog</title>
+    <link>/tags/family/</link>
+    <description>Recent content in Family on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Fri, 30 Mar 2018 20:30:59 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/family/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Trip to Berlin</title>
+      <link>/post/trip-to-berlin/</link>
+      <pubDate>Fri, 30 Mar 2018 20:30:59 +0200</pubDate>
+      
+      <guid>/post/trip-to-berlin/</guid>
+      <description>Our trip to Berlin This is part of my previous Challenge to make 26 things before 2017 ends, which I&amp;rsquo;m trying to finish now in 2018.
+After living and working abroad (in Berlin, Germany) for almost a year, having my family (finally) joining from Barcelona was both exciting and challenging. Packing and shipping all belongings and memories of 7 happy years over 1.800 kilometers is not an easy task. Needless to say, finding a flat in Berlin and dealing with the German bureaucracy on top of moving arrangements was particularly hard.</description>
+    </item>
+    
+    <item>
+      <title>My daughter&#39;s book with Pandoc (Spanish)</title>
+      <link>/projects/childbook/</link>
+      <pubDate>Sun, 19 Nov 2017 20:57:17 +0100</pubDate>
+      
+      <guid>/projects/childbook/</guid>
+      <description>Erin&amp;rsquo;s children&amp;rsquo;s book This project is quite personal, as it is my first children&amp;rsquo;s story ever to be published solely for my daughter, Erin. It has a lot of inside jokes and references.
+It was meant to be her birthday&amp;rsquo;s gift (last May), however due to work and other demons, it had to be postponed and now it will be her Christmas present - I hope I don&amp;rsquo;t screw up this time.</description>
+    </item>
+    
+  </channel>
+</rss>

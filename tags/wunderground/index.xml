@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wunderground on Antonio Lignan&#39;s blog</title>
+    <link>/tags/wunderground/</link>
+    <description>Recent content in Wunderground on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 09 Mar 2019 20:42:36 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/wunderground/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Moving from Wunderground to OpenWeatherMap</title>
+      <link>/post/replacing_wunderground_with_openweather/</link>
+      <pubDate>Sat, 09 Mar 2019 20:42:36 +0100</pubDate>
+      
+      <guid>/post/replacing_wunderground_with_openweather/</guid>
+      <description>Moving from Wunderground to OpenWeatherMap From Wunderground site:
+ The Weather Underground API has reached the end of service. To purchase access to the replacement API, please see our Weather Data Packages. If you are a contracted, paying customer and feel you have been shut off in error, please email feedback.wunderground@weather.com; be sure to include your name and API key.
+ My wunderground-powered weather dashboard) was sadly a victim of this change, and as for my personal use I don&amp;rsquo;t need the extended (paid) services or features offered in The Weather Company tiers, I had to look for a different option to enable back my dashboard.</description>
+    </item>
+    
+  </channel>
+</rss>

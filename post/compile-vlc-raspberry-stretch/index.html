@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch) &middot; Antonio Lignan</title>
+        <meta name="description" content="Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch) Credits to Raspberry Pi Forum.
+The VLC version from Raspbian doesn&rsquo;t support the GPU of the RPi, and isn&rsquo;t able to play high resolution videos. An alternative is to compile to include this, but be careful as depending on the Raspbian distribution (Stretch, Wheezy, etc.) the dependencies and patches may be different. This notebook targets Stretch, and it has been well-tested in a Raspberry Pi version 3.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch)">
+<meta property="og:description" content="Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch) Credits to Raspberry Pi Forum.
+The VLC version from Raspbian doesn&rsquo;t support the GPU of the RPi, and isn&rsquo;t able to play high resolution videos. An alternative is to compile to include this, but be careful as depending on the Raspbian distribution (Stretch, Wheezy, etc.) the dependencies and patches may be different. This notebook targets Stretch, and it has been well-tested in a Raspberry Pi version 3.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/compile-vlc-raspberry-stretch/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch)</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-08-05" itemprop="datePublished">Sun, Aug 5, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="compile-vlc-with-hardware-acceleration-for-the-raspberry-pi-stretch">Compile VLC with Hardware Acceleration for the Raspberry Pi (Stretch)</h1>
+
+<p>Credits to <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=195221">Raspberry Pi Forum</a>.</p>
+
+<p>The VLC version from Raspbian doesn&rsquo;t support the GPU of the RPi, and isn&rsquo;t able to play high resolution videos. An alternative is to compile to include this, but be careful as depending on the Raspbian distribution (Stretch, Wheezy, etc.) the dependencies and patches may be different.  This notebook targets Stretch, and it has been well-tested in a Raspberry Pi version 3.</p>
+
+<pre><code class="language-bash">sudo apt-get install autopoint pkg-config libtool build-essential autoconf
+</code></pre>
+
+<p>And more to install:</p>
+
+<pre><code class="language-bash">sudo apt-get install liba52-0.7.4 libasound2 libass5 libavahi-client3 libavahi-common3 libavc1394-0 libbasicusageenvironment1 libbluray1 libbz2-1.0 libc6 libcairo2 libcddb2 libcdio13 libchromaprint1 libdbus-1-3 libdc1394-22 libdca0 libdirectfb-1.2-9 libdvbpsi10 libdvdnav4 libdvdread4 libebml4v5 libfaad2 libflac8 libfontconfig1 libfreetype6 libfribidi0 libgcc1 libgcrypt20 libglib2.0-0 libgme0 libgnutls30 libgpg-error0 libgroupsock8 libgsm1 libjpeg62-turbo libkate1 liblirc-client0 liblivemedia57 liblua5.2-0 liblzma5 libmad0 libmatroska6v5 libmodplug1 libmp3lame0 libmpcdec6 libmpeg2-4 libmtp9 libncursesw5 libogg0 libopus0 libpng16-16 libpulse0 libraw1394-11 libresid-builder0c2a librsvg2-2 librtmp1 libsamplerate0 libsdl-image1.2 libsdl1.2debian libshine3 libshout3 libsidplay2 libsnappy1v5 libsndio6.1 libspeex1 libspeexdsp1 libssh-gcrypt-4 libssh2-1 libstdc++6 libtag1v5 libtheora0 libtinfo5 libtwolame0 libudev1 libupnp6 libusageenvironment3 libva-drm1 libva-x11-1 libva1 libvcdinfo0 libvorbis0a libvorbisenc2 libvpx4 libwavpack1 libwebp6 libwebpmux2 libx11-6 libx264-148 libx265-95 libxcb-keysyms1 libxcb1 libxml2 libxvidcore4 libzvbi0 zlib1g libgdk-pixbuf2.0-0 libgtk2.0-0 libnotify4 libqt5core5a libqt5gui5 libqt5widgets5 libqt5x11extras5 libxi6 libsmbclient libxext6 libxinerama1 libxpm4 fonts-freefont-ttf libaa1 libcaca0 libegl1-mesa libgl1-mesa-glx libgles1-mesa libgles2-mesa libxcb-shm0 libxcb-xv0 libxcb-randr0 libxcb-composite0
+</code></pre>
+
+<p>And even more to install (development packages):</p>
+
+<pre><code class="language-bash">sudo apt-get install liba52-0.7.4-dev libasound2-dev libass-dev libavahi-client-dev libavc1394-dev libbluray-dev libbz2-dev libc6-dev libcairo2-dev libcddb2-dev libcdio-dev libchromaprint-dev libdbus-1-dev libdc1394-22-dev libdca-dev libdirectfb-dev libdvbpsi-dev libdvdnav-dev libdvdread-dev libebml-dev libfaad-dev libflac-dev libfontconfig1-dev libfreetype6-dev libfribidi-dev libgcc-6-dev libgcrypt20-dev libglib2.0-dev libgme-dev libgnutls28-dev libgpg-error-dev libgsm1-dev libjpeg62-turbo-dev libkate-dev liblircclient-dev liblivemedia-dev liblua5.2-dev liblzma-dev libmad0-dev libmatroska-dev libmodplug-dev libmp3lame-dev libmpcdec-dev libmpeg2-4-dev libmtp-dev libncursesw5-dev libogg-dev libopus-dev libpng-dev libpulse-dev libraw1394-dev libresid-builder-dev librsvg2-dev librtmp-dev libsamplerate0-dev libsdl-image1.2-dev libsdl1.2-dev libshine-dev libshout3-dev libsidplay2-dev libsnappy-dev libsndio-dev libspeex-dev libspeexdsp-dev libssh-gcrypt-dev libssh2-1-dev libstdc++-6-dev libtag1-dev libtheora-dev libtinfo-dev libtwolame-dev libudev-dev libupnp6-dev libva-dev libvcdinfo-dev libvorbis-dev libvpx-dev libwavpack-dev libwebp-dev libx11-dev libx264-dev libx265-dev libxcb-keysyms1-dev libxcb1-dev libxml2-dev libxvidcore-dev libzvbi-dev zlib1g-dev libgdk-pixbuf2.0-dev libgtk2.0-dev libnotify-dev libqt5x11extras5-dev libxi-dev libsmbclient-dev libxext-dev libxinerama-dev libxpm-dev libaa1-dev libcaca-dev libegl1-mesa-dev libgles1-mesa-dev libgles2-mesa-dev libxcb-shm0-dev libxcb-xv0-dev libxcb-randr0-dev libxcb-composite0-dev libavcodec-dev libavformat-dev libgstreamer1.0-dev libswscale-dev
+</code></pre>
+
+<p>The VLC sources to compile:</p>
+
+<pre><code class="language-bash">wget https://download.videolan.org/vlc/2.2.8/vlc-2.2.8.tar.xz
+tar -xJf vlc-2.2.8.tar.xz
+</code></pre>
+
+<p>And the patch:</p>
+
+<pre><code class="language-bash">wget http://steinerdatenbank.de/software/vlc-2.2.8-ffmpeg3-1.patch
+</code></pre>
+
+<p>Prepare for compiling:</p>
+
+<pre><code class="language-bash">cd vlc-2.2.8
+./bootstrap
+patch -Np1 -i ../vlc-2.2.8-ffmpeg3-1.patch
+sed -i 's/error-implicit-function-declaration//' configure
+</code></pre>
+
+<p>Set the variables for compiling:</p>
+
+<pre><code class="language-bash">export CFLAGS=&quot;-I/opt/vc/include/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -I/opt/vc/include/interface/mmal -I/opt/vc/include/interface/vchiq_arm -I/opt/vc/include/IL -I/opt/vc/include/GLES2 -I/opt/vc/include/EGL -mfloat-abi=hard -mcpu=cortex-a7 -mfpu=neon-vfpv4&quot; CXXFLAGS=&quot;-I/opt/vc/include/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -I/opt/vc/include/interface/mmal -I/opt/vc/include/interface/vchiq_arm -I/opt/vc/include/IL -mfloat-abi=hard -I/opt/vc/include/GLES2 -I/opt/vc/include/EGL -mcpu=cortex-a7 -mfpu=neon-vfpv4&quot; LDFLAGS=&quot;-L/opt/vc/lib&quot;
+</code></pre>
+
+<p>Configure for compiling:</p>
+
+<pre><code class="language-bash">./configure --prefix=/usr --enable-omxil --enable-omxil-vout --enable-rpi-omxil --disable-mmal-codec --disable-mmal-vout --enable-gles2
+</code></pre>
+
+<p>After some minutes:</p>
+
+<pre><code class="language-bash">make -j3
+</code></pre>
+
+<p>And if everything goes OK, after a long wait:</p>
+
+<pre><code class="language-bash">sudo make install
+</code></pre>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/vlc/">VLC</a>, 
+            
+                <a href="/tags/raspberry-pi/">Raspberry Pi&#34;</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Compile%20VLC%20with%20Hardware%20Acceleration%20for%20the%20Raspberry%20Pi%20%28Stretch%29&url=%2fpost%2fcompile-vlc-raspberry-stretch%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fcompile-vlc-raspberry-stretch%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fcompile-vlc-raspberry-stretch%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Compile%20VLC%20with%20Hardware%20Acceleration%20for%20the%20Raspberry%20Pi%20%28Stretch%29&url=%2fpost%2fcompile-vlc-raspberry-stretch%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

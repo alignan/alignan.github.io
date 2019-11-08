@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2) &middot; Antonio Lignan</title>
+        <meta name="description" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2) This is part of my Challenge to make 26 things before 2018 ends.
+This is the second part of my blog post, if you want to read how this started click here)
+The architecture looks as following:
+
+If you want to skip the next sections, here&rsquo;s the link to the project repository:">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2)">
+<meta property="og:description" content="Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2) This is part of my Challenge to make 26 things before 2018 ends.
+This is the second part of my blog post, if you want to read how this started click here)
+The architecture looks as following:
+
+If you want to skip the next sections, here&rsquo;s the link to the project repository:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/smart-home-with-influxdb-grafana-hue-enocean-2/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2)</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-11-02" itemprop="datePublished">Fri, Nov 2, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="smart-home-with-enocean-sensors-philips-hue-and-weather-underground-running-on-influxdb-and-grafana-in-a-raspberry-pi-part-2-of-2">Smart Home with enOcean sensors, Philips Hue and Weather underground, running on influxDb and Grafana in a Raspberry Pi (Part 2 of 2)</h1>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do">Challenge to make 26 things before 2018 ends</a>.</p>
+
+<p>This is the second part of my blog post, if you want to read how this started click <a href="/post/smart-home-with-influxdb-grafana-hue-enocean/">here</a>)</p>
+
+<p>The architecture looks as following:</p>
+
+<p><a href="/img/smart-home-with-influxdb-grafana-hue-enocean/00.png"><img src="/img/smart-home-with-influxdb-grafana-hue-enocean/00.png" alt="" /></a></p>
+
+<p>If you want to skip the next sections, here&rsquo;s the link to the project repository:</p>
+
+<p><a href="https://github.com/alignan/home-improvements">https://github.com/alignan/home-improvements</a></p>
+
+<h2 id="enocean-gateway-controller-setup-usb-300">enOcean gateway controller setup (USB 300)</h2>
+
+<p>In my setup I used the <a href="https://www.enocean.com/en/enocean-modules/details/usb-300-oem/">enOcean USB 300 controller</a>.</p>
+
+<p>The first step was to check if the USB stick was detected by the OS:</p>
+
+<pre><code class="language-bash">$ dmesg
+[134190.301364] usb 1-1.3: new full-speed USB device number 4 using dwc_otg
+[134190.458809] usb 1-1.3: New USB device found, idVendor=0403, idProduct=6001
+[134190.458819] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[134190.458823] usb 1-1.3: Product: FT232R USB UART
+[134190.458827] usb 1-1.3: Manufacturer: FTDI
+[134190.458831] usb 1-1.3: SerialNumber: A90551EY
+[134190.690127] usbcore: registered new interface driver usbserial
+[134190.690168] usbcore: registered new interface driver usbserial_generic
+[134190.690201] usbserial: USB Serial support registered for generic
+[134190.698717] usbcore: registered new interface driver ftdi_sio
+[134190.698759] usbserial: USB Serial support registered for FTDI USB Serial Device
+[134190.698918] ftdi_sio 1-1.3:1.0: FTDI USB Serial Device converter detected
+[134190.699010] usb 1-1.3: Detected FT232RL
+[134190.699817] usb 1-1.3: FTDI USB Serial Device converter now attached to ttyUSB0
+</code></pre>
+
+<p>Also checked:</p>
+
+<pre><code class="language-bash">$ lsusb 
+Bus 001 Device 004: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC
+</code></pre>
+
+<p>I powered on an enOcean sensor to check if the Gateway would receive any reading.  It was required to change the default baudrate to <code>57600</code> first, and then dump data from the <code>/dev/ttyUSB0</code> to console:</p>
+
+<pre><code class="language-bash">$ stty -F /dev/ttyUSB0 57600
+$ hexdump -C &lt; /dev/ttyUSB0
+00000000  55 00 0a 07 01 eb a5 00  00 54 08 01 80 f5 bc 00  |U........T......|
+00000010  01 ff ff ff ff 2e 00 41  55 00 0a 07 01 eb a5 00  |.......AU.......|
+00000020  00 50 08 01 9c 44 00 01  ff ff ff ff 32 00 33 55  |.P...D......2.3U|
+</code></pre>
+
+<p>The radio telegrams are described in the <a href="http://www.enocean.com/esp">enOcean ESP3 protocol</a></p>
+
+<h2 id="initial-testing">Initial testing</h2>
+
+<h3 id="enocean-python-client">enOcean python client</h3>
+
+<p>I stumbled upon this <a href="https://github.com/kipe/enocean">python-based client</a> to communicate over serial to the enOcean controller.</p>
+
+<pre><code class="language-bash">$ sudo pip install enocean
+</code></pre>
+
+<p>I had to modify the <a href="https://github.com/kipe/enocean/blob/master/examples/enocean_example.py">enocean example</a> to initialize the <code>SerialCommunicator</code> to use the <code>/dev/ttyUSB0</code> port.</p>
+
+<pre><code class="language-python">communicator = SerialCommunicator(port='/dev/ttyUSB0')
+</code></pre>
+
+<p>I pressed the learn button in my <a href="https://www.greenelectric.eu/Afriso-Temperature-Sensor-FTM-T-EnOcean-Afriso-Lab">AFRISO Temperature Sensor FTM T</a>, this is what I received:</p>
+
+<pre><code class="language-bash">
+2018-10-13 12:35:04,506 - enocean.protocol.packet - DEBUG - learn received, EEP detected, RORG: 0xA5, FUNC: 0x02, TYPE: 0x05, Manufacturer: 0x2D
+2018-10-13 12:35:04,507 - enocean.communicators.SerialCommunicator - DEBUG - 01:80:F5:BC-&gt;FF:FF:FF:FF (-60 dBm): 0x01 ['0xa5', '0x8', '0x28', '0x2d', '0x80', '0x1', '0x80', '0xf5', '0xbc', '0x0'] ['0x1', '0xff', '0xff', '0xff', '0xff', '0x3c', '0x0'] OrderedDict()
+TMP: {u'value': 32.94117647058823, u'description': u'Temperature (linear)', u'unit': u'\xb0C', u'raw_value': 45}
+</code></pre>
+
+<h3 id="understanding-enocean-telegrams">Understanding enOcean Telegrams</h3>
+
+<p>From the frame above there are three important fields:</p>
+
+<ul>
+<li>RORG: the ERP radio telegram type (8 bits)</li>
+<li>FUNC: basic functionality of the data content (6 bits)</li>
+<li>TYPE: type of device in its individual characteristics (7 bits)</li>
+</ul>
+
+<p>The frame we received corresponds to 4BS or 4-byte communication (<code>RORG=0xA5</code>):</p>
+
+<blockquote>
+<p>A 4BS telegram carries a payload of 4 bytes. The sequence of the 4 data bytes is historically reversed, so that DB_3 appears first and DB_0 last on the radio interface. The bits are addressed in the sequence of the data flow, however (offset). Hence, DB_3.BIT_7 has the offset position 0 and DB_0.BIT_3 (LRN bit) has the offset position 28. The actual content-bits in a byte are not affected by this, i.e., they are described from right (2H0) to left (2H7) in the ascending order.</p>
+</blockquote>
+
+<h4 id="temperature-sensor">Temperature sensor</h4>
+
+<p>The bytes following the <code>0xa5</code> byte corresponds to the data payload (starting from DB_3) as follows: <code>'0x8', '0x28', '0x2d', '0x80'</code>, being <code>0x2d</code> the <code>raw_value</code> of 45, as shown in the received packet.  The calculations to obtain the actual temperature value are given by the offset, size and bit range information of the profile, per the EEP (enOcean Equipment Profile) description.</p>
+
+<p>The <code>FUNC=0x02</code> and <code>TYPE=0x05</code> corresponds to the Temperature Sensors (given by the <code>FUNC</code> value) with a range from 0-40°C (as per its <code>TYPE</code> value).  The units are Celsius, and the calculation is made by taking the bits <code>DB1.0-DB1.7</code> (bitrange) with a 16-bit offset.  In this profile, <code>DB_3</code> and <code>DB_2</code> are not used, and <code>DB0.3</code> shows the <code>learn bit</code> status.  A <code>shortcut</code> identifier is used to resume the description before, in this case as <code>TMP</code> (linear temperature).</p>
+
+<p>Note also the <code>0x01</code> at the start of the frame: this correspond to the <code>RADIO_ERP1</code> packet type (Radio Telegram).  This is further detailed in the Radio <code>Addressing Destination Telegram format</code> (ADT).  The <code>Sender ID</code> field follows the 4 bytes of the payload (as the <code>4BS</code> lenght), thus <code>'0x1', '0x80', '0xf5', '0xbc', '0x0'</code> are equivalent to the address <code>01:80:F5:BC</code>.</p>
+
+<p>The next octets are part of the <code>Optional Data</code> fields, being <code>0x01</code> the number of sub-telegram received, <code>'0xff', '0xff', '0xff', '0xff'</code> the destination address (broadcast), and finally the <code>signal strength</code> byte (in dBm) and the <code>security level</code> byte (being zero related to telegram not processed).</p>
+
+<h4 id="co2-pure-sensor-with-power-failure-detection">CO2 Pure sensor with power failure detection</h4>
+
+<p>When I pressed the <code>learn</code> button of the <a href="https://afrisohome.de/en/portfolio/co2-sensor-2/">Afriso CO2 sensor</a> I got the following frames:</p>
+
+<pre><code class="language-bash">2018-10-18 20:49:12,733 - enocean.protocol.packet - DEBUG - learn received, EEP detected, RORG: 0xA5, FUNC: 0x09, TYPE: 0x09, Manufacturer: 0x2D
+2018-10-18 20:49:12,734 - enocean.communicators.SerialCommunicator - DEBUG - 01:9C:44:11-&gt;FF:FF:FF:FF (-54 dBm): 0x01 ['0xa5', '0x24', '0x48', '0x2d', '0x80', '0x1', '0x9c', '0x44', '0x11', '0x0'] ['0x1', '0xff', '0xff', '0xff', '0xff', '0x36', '0x0'] OrderedDict()
+</code></pre>
+
+<p>The <code>FUNC=0x09</code> and <code>TYPE=0x09</code> corresponds to the Pure CO2 sensors with power failure detection, with 8-bit resolution and up to 2000ppm.  The device is quite cool as it reflects the recommended CO2 thresholds over a LED (green if OK, yellow likely to ventilate the room, and red to definitely ventilate), and it has a message whenever a digital input changes (when power is lost), so it might be used as well to detect power failures in the room.</p>
+
+<p>The <code>shortcut</code> identifier is <code>CO2</code> (data from <code>DB1.7-DB1.0</code>), and the failure detection identifier is <code>LRNB</code> (from <code>DB0.2</code>).</p>
+
+<h2 id="putting-everything-together">Putting everything together</h2>
+
+<p>The <code>CO2</code> profile was not implemented in the <a href="https://github.com/kipe/enocean">enocean application</a>, I had to fork it and implement it on my own (just copy and pasting a XML block and filling the details), the link to the updated file is <a href="https://github.com/alignan/enocean/blob/master/enocean/protocol/EEP.xml">here</a>.</p>
+
+<pre><code class="language-xml">&lt;profiles func=&quot;0x09&quot; description=&quot;Gas Sensor&quot;&gt;
+      &lt;profile description=&quot;Pure CO2 Sensor with Power Failure Detection&quot; type=&quot;0x09&quot;&gt;
+        &lt;data&gt;
+          &lt;value shortcut=&quot;CO2&quot; description=&quot;Pure CO2 sensor with 8 bit resolution and 0–2000ppm&quot; offset=&quot;16&quot; size=&quot;8&quot; unit=&quot;ppm&quot;&gt;
+            &lt;range&gt;
+              &lt;min&gt;0&lt;/min&gt;
+              &lt;max&gt;255&lt;/max&gt;
+            &lt;/range&gt;
+            &lt;scale&gt;
+              &lt;min&gt;0&lt;/min&gt;
+              &lt;max&gt;2000&lt;/max&gt;
+            &lt;/scale&gt;
+          &lt;/value&gt;
+          &lt;enum shortcut=&quot;PFD&quot; description=&quot;Power Failure Detection&quot; offset=&quot;28&quot; size=&quot;1&quot;&gt;
+            &lt;item description=&quot;Power failure not detected&quot; value=&quot;0&quot; /&gt;
+            &lt;item description=&quot;Power failure detected&quot; value=&quot;1&quot; /&gt;
+          &lt;/enum&gt;
+        &lt;/data&gt;
+      &lt;/profile&gt;
+    &lt;/profiles&gt;
+</code></pre>
+
+<p>The implementation itself was quite simple once I was able to verify the data frames from the radio, however rather than inspecting packets for its <code>TYPE</code> and <code>FUNC</code> fields (my preferred approach), I had to create a device mapping based on location as these fields were only populated by the library whenever the <code>learn</code> bit was set - perhaps something related to the protocol itself, but I wanted to implement this in a single lazy Sunday evening.</p>
+
+<pre><code class="language-python">ENOCEAN_DEVICES = {
+    '01:80:F5:BC': 'main_bedroom_temperature',
+    '01:9C:44:11': 'living_room_CO2'
+}
+</code></pre>
+
+<p>Here&rsquo;s the looper:</p>
+
+<pre><code class="language-python"># endless loop receiving radio packets
+    while communicator.is_alive():
+        try:
+            # Loop to empty the queue...
+            packet = communicator.receive.get(block=True, timeout=1)
+
+            meas = {}
+
+            if packet.packet_type == PACKET.RADIO:
+                if packet.rorg == RORG.BS4 and packet.sender_hex in ENOCEAN_DEVICES:
+
+                    # a hack as the rorg_type and rorg_func fields are only populated when the learn bit is set,
+                    # perhaps something I don't understand about the protocol... I'm taking the lazy approach...
+                    if ENOCEAN_DEVICES[packet.sender_hex] == 'main_bedroom_temperature':
+                    # if packet.rorg_type == 0x05 and packet.rorg_func == 0x02:
+                        packet.select_eep(0x02, 0x05)
+                        packet.parse_eep()
+                        meas[ENOCEAN_DEVICES[packet.sender_hex]] = round(packet.parsed['TMP']['value'], 2)
+                    if ENOCEAN_DEVICES[packet.sender_hex] == 'living_room_CO2':
+                    # if packet.rorg_type == 0x09 and packet.rorg_func == 0x09:
+                        packet.select_eep(0x09, 0x09)
+                        packet.parse_eep()
+                        meas[ENOCEAN_DEVICES[packet.sender_hex]] = round(packet.parsed['CO2']['value'], 2)
+            if meas:
+                publish_to_database(meas)
+
+        except queue.Empty:
+            continue
+        except KeyboardInterrupt:
+            break
+        except Exception:
+            traceback.print_exc(file=sys.stdout)
+            break
+
+        time.sleep(0.1)
+</code></pre>
+
+<p>As a next step I will replace the <code>/dev/ttyUSB0</code> with a proper <code>udev</code> rule.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Smart%20Home%20with%20enOcean%20sensors%2c%20Philips%20Hue%20and%20Weather%20underground%2c%20running%20on%20influxDb%20and%20Grafana%20in%20a%20Raspberry%20Pi%20%28Part%202%20of%202%29&url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean-2%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean-2%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean-2%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Smart%20Home%20with%20enOcean%20sensors%2c%20Philips%20Hue%20and%20Weather%20underground%2c%20running%20on%20influxDb%20and%20Grafana%20in%20a%20Raspberry%20Pi%20%28Part%202%20of%202%29&url=%2fpost%2fsmart-home-with-influxdb-grafana-hue-enocean-2%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

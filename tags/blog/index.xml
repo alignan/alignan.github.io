@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Antonio Lignan&#39;s blog</title>
+    <link>/tags/blog/</link>
+    <description>Recent content in Blog on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 21 Oct 2017 23:49:35 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>This Blog</title>
+      <link>/projects/this-blog/</link>
+      <pubDate>Sat, 21 Oct 2017 23:49:35 +0200</pubDate>
+      
+      <guid>/projects/this-blog/</guid>
+      <description>This blog Creating an improving this blog is itself a project. Although I prefer to keep day to day progress in separate blog posts, I thought it would be good to keep track of the projects&amp;rsquo; evolution in a single placeholder - tags are also helpful and included, but this way I can have a better index for my own later reference.
+Some specific about the blog, like minimum improvements like adding tags, categories, or internal links, are not necessarily tracked in a post, as I already made publicly available the blog&amp;rsquo;s sources - peep as you need!</description>
+    </item>
+    
+    <item>
+      <title>Deploy Hugo to Github pages and build with Travis CI</title>
+      <link>/post/deploy-hugo-to-github/</link>
+      <pubDate>Mon, 02 Oct 2017 22:46:12 +0200</pubDate>
+      
+      <guid>/post/deploy-hugo-to-github/</guid>
+      <description>Deploy a Hugo website to Github pages and build with Travis CI  GitHub provides free and fast static hosting over SSL for personal, organization, or project pages directly from a GitHub repository via its GitHub Pages service.
+ I know there are other options, such as Netlify, but I was not too keen to yet depend on another framework, specially one using node.js&amp;hellip; famous last words&amp;hellip;
+This is part of my Challenge to make 26 years before 2017 ends.</description>
+    </item>
+    
+    <item>
+      <title>Create Blogs With Hugo</title>
+      <link>/post/create-blogs-with-hugo/</link>
+      <pubDate>Sat, 30 Sep 2017 23:41:11 +0200</pubDate>
+      
+      <guid>/post/create-blogs-with-hugo/</guid>
+      <description>Create a blog using Hugo Hugo is an open source static site generator based on Go
+This is part of my Challenge to make 26 things before 2017 ends. Proudly to say, this is the begining of my journey.
+Quick-start Taken from Hugo&amp;rsquo;s documentation
+Install Hugo and other dependencies Heads-up: you will need Homebrew.
+brew install hugo  Check the version:
+$ hugo version Hugo Static Site Generator v0.29 darwin/amd64 BuildDate: 2017-09-30T22:45:47+02:00  Seems we are good to go!</description>
+    </item>
+    
+  </channel>
+</rss>

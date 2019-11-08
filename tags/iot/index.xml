@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Iot on Antonio Lignan&#39;s blog</title>
+    <link>/tags/iot/</link>
+    <description>Recent content in Iot on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Mon, 25 Dec 2017 18:54:40 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/iot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>An IoT Raspberry Pi powered plant monitoring system II</title>
+      <link>/post/monitoring-plant-resin-io/</link>
+      <pubDate>Mon, 25 Dec 2017 18:54:40 +0100</pubDate>
+      
+      <guid>/post/monitoring-plant-resin-io/</guid>
+      <description>Monitoring my plant using sensors, relayr&amp;rsquo;s cloud, resin.io and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This post is a continuation of the Raspberry Pi powered plant monitoring system post, in which I discussed the project requirements, and briefly showed how to flash the resinOS to a Raspberry Pi and waterproof a soil sensor.
+Nothing too fancy by then.
+Now I will show:</description>
+    </item>
+    
+    <item>
+      <title>A resin.io example service</title>
+      <link>/post/resinio-example-service/</link>
+      <pubDate>Sat, 25 Nov 2017 14:34:13 +0100</pubDate>
+      
+      <guid>/post/resinio-example-service/</guid>
+      <description>A resin.io example service This is part of my Challenge to make 26 years before 2017 ends.
+This is part of my Project to build an autonomous and remote-controlled watering system for my bonsai, and part of my learning journey to use resin.io. The first step was to understand how to deploy to resin.io and my target device.
+Setting up the repository and first tests The project repository lives at: https://github.</description>
+    </item>
+    
+    <item>
+      <title>My IoT Book</title>
+      <link>/projects/my-iot-book/</link>
+      <pubDate>Sun, 19 Nov 2017 21:09:51 +0100</pubDate>
+      
+      <guid>/projects/my-iot-book/</guid>
+      <description>My IoT book 
+My book: IoT in five Days.
+ This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.
+The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications.</description>
+    </item>
+    
+    <item>
+      <title>About Resin.io and ResinOS</title>
+      <link>/post/resin-io-about/</link>
+      <pubDate>Sun, 22 Oct 2017 22:35:30 +0200</pubDate>
+      
+      <guid>/post/resin-io-about/</guid>
+      <description>Understanding Resin and ResinOS I felt I needed to write this post about Resin.io, as I was jumping directly into deploying and building in a Raspberry Pi (see this post), just jumping from one tutorial to the next.
+It is good to pace down, understand, and then go full speed.
+Resin.io  Resin.io makes it simple to deploy, update, and maintain code running on remote devices. We are bringing the web development and deployment workflow to hardware, using tools like git and Docker to allow you to seamlessly update all your embedded linux devices in the wild.</description>
+    </item>
+    
+    <item>
+      <title>Configure a Resin-based RPi for Local Access</title>
+      <link>/post/configure-rpi-resin-local-access/</link>
+      <pubDate>Sun, 22 Oct 2017 20:08:49 +0200</pubDate>
+      
+      <guid>/post/configure-rpi-resin-local-access/</guid>
+      <description>Accessing a Resin.io-based Raspberry Pi Quick cookbook for future me.
+From Resin.io Raspberry Pi guide:
+ Remove the MicroSD card, under the /boot partition locate and edit the /boot/config.json file. Change the hostname accordingly:  { &amp;quot;persistentLogging&amp;quot;: false, &amp;quot;hostname&amp;quot;: &amp;quot;resin&amp;quot;, }   Configure the local network. I think this can also be done remotely, however is handy to know where to look:  [connection] id=resin-sample type=wifi [wifi] mode=infrastructure ssid=I_Love_Unicorns [wifi-security] auth-alg=open key-mgmt=wpa-psk psk=superSecretPassword [ipv4] method=auto [ipv6] addr-gen-mode=stable-privacy method=auto   Pinging the device (if you haven&amp;rsquo;t changed the hostname):  $ ping resin.</description>
+    </item>
+    
+    <item>
+      <title>IoT automated plant watering and monitoring system</title>
+      <link>/projects/monitor-automate-plant/</link>
+      <pubDate>Sun, 22 Oct 2017 19:10:16 +0200</pubDate>
+      
+      <guid>/projects/monitor-automate-plant/</guid>
+      <description>IoT automated plant watering and monitoring system This project idea came out while thinking about stuff to build before year 2017 ends. The motivation is simple: avoid plants dying in my watch, likely also saving some lives in my wife&amp;rsquo;s garden as well if everything goes OK.
+Whilst installing sensors is easy, I want to experiment with other technologies and paradigms as well, thus this project is a sandbox to learn and test new concepts and applications, having a concrete use case in mind.</description>
+    </item>
+    
+    <item>
+      <title>An IoT Raspberry Pi powered plant monitoring system</title>
+      <link>/post/monitoring-plant-sensors/</link>
+      <pubDate>Sun, 22 Oct 2017 17:31:04 +0200</pubDate>
+      
+      <guid>/post/monitoring-plant-sensors/</guid>
+      <description>Monitoring my new plant using sensors and the Raspberry Pi This is part of my Challenge to make 26 things before 2017 ends.
+This type of project is nothing new in the Makersphere, using environmental sensors with the Raspberry Pi (and Arduinos, ESP8266, etc.) has been done since it&amp;rsquo;s early beginnings, and it is perhaps one of the most implemented use cases.
+Then what is new?
+Likely nothing surprisingly, however, I would attempt to take this above the normal &amp;ldquo;demo and forget&amp;rdquo; existing setups, and create something with a product-oriented approach.</description>
+    </item>
+    
+  </channel>
+</rss>

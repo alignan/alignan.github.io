@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on Antonio Lignan&#39;s blog</title>
+    <link>/tags/ssh/</link>
+    <description>Recent content in Ssh on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sun, 05 Aug 2018 19:39:29 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH hangs when connected to Raspberry Pi 3</title>
+      <link>/post/raspberry-pi-ssh-hangs/</link>
+      <pubDate>Sun, 05 Aug 2018 19:39:29 +0200</pubDate>
+      
+      <guid>/post/raspberry-pi-ssh-hangs/</guid>
+      <description>SSH hangs when connected to Raspberry Pi 3 Credits to Express Hosting Blog.
+Tl;DR: add &amp;quot;IPQoS 0x00&amp;quot; to the bottom of the &amp;quot;/etc/ssh/ssh_config&amp;quot; and &amp;quot;/etc/ssh/sshd_config&amp;quot; files
+From the Blog:
+ One the latest version of SSH installed on the Raspberry Pi 3 uses QoS headers to ensure speedy delivery of packets over the network. For interactive connections (standard shell SSH connections) it sets the IP header for IP_TOS to be 0x10 (low delay or latency).</description>
+    </item>
+    
+  </channel>
+</rss>

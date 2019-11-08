@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Antonio Lignan&#39;s blog</title>
+    <link>/tags/docker/</link>
+    <description>Recent content in Docker on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 25 Nov 2017 14:34:13 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A resin.io example service</title>
+      <link>/post/resinio-example-service/</link>
+      <pubDate>Sat, 25 Nov 2017 14:34:13 +0100</pubDate>
+      
+      <guid>/post/resinio-example-service/</guid>
+      <description>A resin.io example service This is part of my Challenge to make 26 years before 2017 ends.
+This is part of my Project to build an autonomous and remote-controlled watering system for my bonsai, and part of my learning journey to use resin.io. The first step was to understand how to deploy to resin.io and my target device.
+Setting up the repository and first tests The project repository lives at: https://github.</description>
+    </item>
+    
+    <item>
+      <title>About Resin.io and ResinOS</title>
+      <link>/post/resin-io-about/</link>
+      <pubDate>Sun, 22 Oct 2017 22:35:30 +0200</pubDate>
+      
+      <guid>/post/resin-io-about/</guid>
+      <description>Understanding Resin and ResinOS I felt I needed to write this post about Resin.io, as I was jumping directly into deploying and building in a Raspberry Pi (see this post), just jumping from one tutorial to the next.
+It is good to pace down, understand, and then go full speed.
+Resin.io  Resin.io makes it simple to deploy, update, and maintain code running on remote devices. We are bringing the web development and deployment workflow to hardware, using tools like git and Docker to allow you to seamlessly update all your embedded linux devices in the wild.</description>
+    </item>
+    
+  </channel>
+</rss>

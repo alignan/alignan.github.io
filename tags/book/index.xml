@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on Antonio Lignan&#39;s blog</title>
+    <link>/tags/book/</link>
+    <description>Recent content in Book on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sun, 26 Nov 2017 01:53:16 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Daughter&#39;s Book</title>
+      <link>/post/my-daughters-book/</link>
+      <pubDate>Sun, 26 Nov 2017 01:53:16 +0100</pubDate>
+      
+      <guid>/post/my-daughters-book/</guid>
+      <description>My Daughter&amp;rsquo;s book This is part of my Challenge to make 26 years before 2017 ends.
+I had an overdue and on-going task in my list: write a book for Erin, my daughter. I began writing a fantastic tale about Erin (our fearless heroin) and her surprising companion back in June 5th 2017, and now, November 25th it is finally done and sent to the printers.
+Literally.
+
+In Spanish.</description>
+    </item>
+    
+    <item>
+      <title>My IoT Book</title>
+      <link>/projects/my-iot-book/</link>
+      <pubDate>Sun, 19 Nov 2017 21:09:51 +0100</pubDate>
+      
+      <guid>/projects/my-iot-book/</guid>
+      <description>My IoT book 
+My book: IoT in five Days.
+ This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.
+The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications.</description>
+    </item>
+    
+    <item>
+      <title>My daughter&#39;s book with Pandoc (Spanish)</title>
+      <link>/projects/childbook/</link>
+      <pubDate>Sun, 19 Nov 2017 20:57:17 +0100</pubDate>
+      
+      <guid>/projects/childbook/</guid>
+      <description>Erin&amp;rsquo;s children&amp;rsquo;s book This project is quite personal, as it is my first children&amp;rsquo;s story ever to be published solely for my daughter, Erin. It has a lot of inside jokes and references.
+It was meant to be her birthday&amp;rsquo;s gift (last May), however due to work and other demons, it had to be postponed and now it will be her Christmas present - I hope I don&amp;rsquo;t screw up this time.</description>
+    </item>
+    
+  </channel>
+</rss>

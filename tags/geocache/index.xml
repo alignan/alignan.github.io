@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geocache on Antonio Lignan&#39;s blog</title>
+    <link>/tags/geocache/</link>
+    <description>Recent content in Geocache on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sat, 30 Dec 2017 23:34:42 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/geocache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Latest Geocaches</title>
+      <link>/post/my-latest-geocaches/</link>
+      <pubDate>Sat, 30 Dec 2017 23:34:42 +0100</pubDate>
+      
+      <guid>/post/my-latest-geocaches/</guid>
+      <description>My latest geocaches This is part of my Challenge to make 26 things before 2017 ends.
+ Geocaching is a real-world, outdoor treasure hunting game using GPS-enabled devices. Participants navigate to a specific set of GPS coordinates and then attempt to find the geocache (container) hidden at that location.
+ The history of Geocaching goes back to the year 2000 and the invention of GPS itself, with The Great American GPS Stash Hunt as a way to test the accuracy of the devices hunting a hidden bucket in Beavercreek, Oregon, near Portland.</description>
+    </item>
+    
+  </channel>
+</rss>

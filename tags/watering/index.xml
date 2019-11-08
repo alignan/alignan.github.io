@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Watering on Antonio Lignan&#39;s blog</title>
+    <link>/tags/watering/</link>
+    <description>Recent content in Watering on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Sun, 22 Oct 2017 19:10:16 +0200</lastBuildDate>
+    
+	<atom:link href="/tags/watering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IoT automated plant watering and monitoring system</title>
+      <link>/projects/monitor-automate-plant/</link>
+      <pubDate>Sun, 22 Oct 2017 19:10:16 +0200</pubDate>
+      
+      <guid>/projects/monitor-automate-plant/</guid>
+      <description>IoT automated plant watering and monitoring system This project idea came out while thinking about stuff to build before year 2017 ends. The motivation is simple: avoid plants dying in my watch, likely also saving some lives in my wife&amp;rsquo;s garden as well if everything goes OK.
+Whilst installing sensors is easy, I want to experiment with other technologies and paradigms as well, thus this project is a sandbox to learn and test new concepts and applications, having a concrete use case in mind.</description>
+    </item>
+    
+  </channel>
+</rss>

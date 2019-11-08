@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Antonio Lignan&#39;s blog</title>
+    <link>/projects/</link>
+    <description>Recent content in Projects on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Fri, 02 Nov 2018 20:37:54 +0100</lastBuildDate>
+    
+	<atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Home Improvements</title>
+      <link>/projects/home-improvements/</link>
+      <pubDate>Fri, 02 Nov 2018 20:37:54 +0100</pubDate>
+      
+      <guid>/projects/home-improvements/</guid>
+      <description>Improve my home with connected devices and fancy gadgets This is something I was yearning to do for a long time, and as we moved to a new city recently (well, kinda of) finally I had the change to do it right from the beginning. Home improvements is short for &amp;ldquo;connecting a lot of things together&amp;rdquo;, including but not limited to light bulbs, ambient sensors, cameras, automated blinds, etc. - anything that would make my wife either crazy or forever thankful.</description>
+    </item>
+    
+    <item>
+      <title>The 2018 Challenge</title>
+      <link>/projects/the-2018-challenge/</link>
+      <pubDate>Mon, 01 Jan 2018 16:00:11 +0100</pubDate>
+      
+      <guid>/projects/the-2018-challenge/</guid>
+      <description>The 2018 challenge This is a continuation from the 2017 challenge, a great one I hope to keep up for a very long time (and of course to finish).
+This is a Meta project, as it will spawned several ones, thus I will not keep track of references here, but likely the related blog posts will include the Challenge 2018 tag.
+And of course, I made a Github repository, in which I&amp;rsquo;m tracking the progress with the issues associated to my milestone completion:</description>
+    </item>
+    
+    <item>
+      <title>My IoT Book</title>
+      <link>/projects/my-iot-book/</link>
+      <pubDate>Sun, 19 Nov 2017 21:09:51 +0100</pubDate>
+      
+      <guid>/projects/my-iot-book/</guid>
+      <description>My IoT book 
+My book: IoT in five Days.
+ This booklet is a quick but thoughtful guide to jump into the Internet of Things, covering important subjects as IPv6 networking, sensors, wireless protocols and technologies, as well as IoT cloud platforms and its most commonly used protocols, featuring lots of hands-on examples to start working from day one.
+The lessons and examples are heavily focused on Contiki OS, a well known IoT operating system well suited for low power embedded devices, and the Zolertia Z1 mote, a widely used hardware platform to develop a wide range of IoT applications.</description>
+    </item>
+    
+    <item>
+      <title>My daughter&#39;s book with Pandoc (Spanish)</title>
+      <link>/projects/childbook/</link>
+      <pubDate>Sun, 19 Nov 2017 20:57:17 +0100</pubDate>
+      
+      <guid>/projects/childbook/</guid>
+      <description>Erin&amp;rsquo;s children&amp;rsquo;s book This project is quite personal, as it is my first children&amp;rsquo;s story ever to be published solely for my daughter, Erin. It has a lot of inside jokes and references.
+It was meant to be her birthday&amp;rsquo;s gift (last May), however due to work and other demons, it had to be postponed and now it will be her Christmas present - I hope I don&amp;rsquo;t screw up this time.</description>
+    </item>
+    
+    <item>
+      <title>The 2017 Challenge (Meta)</title>
+      <link>/projects/the-2017-challenge/</link>
+      <pubDate>Wed, 01 Nov 2017 18:13:19 +0100</pubDate>
+      
+      <guid>/projects/the-2017-challenge/</guid>
+      <description>The 2017 challenge I was a bit bored and feeling depressed by end of September 2017 - living in Berlin eight months away from my family took most of my motivation and sanity, and I was getting my &amp;ldquo;kicks&amp;rdquo; only from my job, which is OK, but going also from developer to full manager has its downsides&amp;hellip;
+At the Deadline Demo Party, while coding and watching some Intros, I made up my mind, and decided to challenge myself, and try to do 26 things before 2017 ended.</description>
+    </item>
+    
+    <item>
+      <title>IoT automated plant watering and monitoring system</title>
+      <link>/projects/monitor-automate-plant/</link>
+      <pubDate>Sun, 22 Oct 2017 19:10:16 +0200</pubDate>
+      
+      <guid>/projects/monitor-automate-plant/</guid>
+      <description>IoT automated plant watering and monitoring system This project idea came out while thinking about stuff to build before year 2017 ends. The motivation is simple: avoid plants dying in my watch, likely also saving some lives in my wife&amp;rsquo;s garden as well if everything goes OK.
+Whilst installing sensors is easy, I want to experiment with other technologies and paradigms as well, thus this project is a sandbox to learn and test new concepts and applications, having a concrete use case in mind.</description>
+    </item>
+    
+    <item>
+      <title>This Blog</title>
+      <link>/projects/this-blog/</link>
+      <pubDate>Sat, 21 Oct 2017 23:49:35 +0200</pubDate>
+      
+      <guid>/projects/this-blog/</guid>
+      <description>This blog Creating an improving this blog is itself a project. Although I prefer to keep day to day progress in separate blog posts, I thought it would be good to keep track of the projects&amp;rsquo; evolution in a single placeholder - tags are also helpful and included, but this way I can have a better index for my own later reference.
+Some specific about the blog, like minimum improvements like adding tags, categories, or internal links, are not necessarily tracked in a post, as I already made publicly available the blog&amp;rsquo;s sources - peep as you need!</description>
+    </item>
+    
+  </channel>
+</rss>

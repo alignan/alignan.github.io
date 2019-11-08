@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Job on Antonio Lignan&#39;s blog</title>
+    <link>/tags/job/</link>
+    <description>Recent content in Job on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Fri, 03 Nov 2017 17:45:52 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/job/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Review From an Intern</title>
+      <link>/post/a-review-from-an-intern/</link>
+      <pubDate>Fri, 03 Nov 2017 17:45:52 +0100</pubDate>
+      
+      <guid>/post/a-review-from-an-intern/</guid>
+      <description>A review from an Intern 
+I take great proud of teaching and developing my team members - both professionally and personally - it is the most rewarding experience and joy of being a technical manager.
+Team development is not not only related to the Junior members of the team, but Seniors as well: there are several dimensions which contributes to career development, being the most proficient coder is not enough, if you can&amp;rsquo;t lead others by example or fail to clearly communicate ideas to peers and managers.</description>
+    </item>
+    
+  </channel>
+</rss>

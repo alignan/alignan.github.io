@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Photos on Antonio Lignan&#39;s blog</title>
+    <link>/tags/photos/</link>
+    <description>Recent content in Photos on Antonio Lignan&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Antonio Lignan, All rights reserved - Opinions are my own</copyright>
+    <lastBuildDate>Wed, 01 Nov 2017 22:45:08 +0100</lastBuildDate>
+    
+	<atom:link href="/tags/photos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Whatsapp Removes Exif properties</title>
+      <link>/post/whatsapp-removes-exif/</link>
+      <pubDate>Wed, 01 Nov 2017 22:45:08 +0100</pubDate>
+      
+      <guid>/post/whatsapp-removes-exif/</guid>
+      <description>Whatsapp removes Exif properties When backing up the photos from my mobile phone to my laptop, and then to Google Photos I noticed something odd: when syncing, most of the photos were shown as it were created just at that moment, even if some images were months older.
+This is quite inconvenient.
+Then I noticed not all the photos backed to Google Photos had this problem, and a deeper look at the EXIF properties of two different files confirmed my assumptions: Whatsapp removes these properties when sharing photos.</description>
+    </item>
+    
+    <item>
+      <title>Remove duplicate photos and videos in MAC (OSX)</title>
+      <link>/post/duplicated-in-mac/</link>
+      <pubDate>Tue, 31 Oct 2017 15:08:17 +0100</pubDate>
+      
+      <guid>/post/duplicated-in-mac/</guid>
+      <description>Remove duplicate photos and videos in MAC (tip) I&amp;rsquo;m reluctant to render myself to the mercy of iCloud and iTunes, thus when syncing my photos from my mobile phone and others, sometimes I end up with plenty of duplicates&amp;hellip; I&amp;rsquo;m trying to break free&amp;hellip;
+DupeGuru is a simple tool that does the job, allowing to find duplicates using file names and content, and then moving to a chosen location, delete, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

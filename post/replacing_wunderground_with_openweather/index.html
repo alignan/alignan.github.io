@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Moving from Wunderground to OpenWeatherMap &middot; Antonio Lignan</title>
+        <meta name="description" content="Moving from Wunderground to OpenWeatherMap From Wunderground site:
+ The Weather Underground API has reached the end of service. To purchase access to the replacement API, please see our Weather Data Packages. If you are a contracted, paying customer and feel you have been shut off in error, please email feedback.wunderground@weather.com; be sure to include your name and API key.
+ My wunderground-powered weather dashboard) was sadly a victim of this change, and as for my personal use I don&rsquo;t need the extended (paid) services or features offered in The Weather Company tiers, I had to look for a different option to enable back my dashboard.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Moving from Wunderground to OpenWeatherMap">
+<meta property="og:description" content="Moving from Wunderground to OpenWeatherMap From Wunderground site:
+ The Weather Underground API has reached the end of service. To purchase access to the replacement API, please see our Weather Data Packages. If you are a contracted, paying customer and feel you have been shut off in error, please email feedback.wunderground@weather.com; be sure to include your name and API key.
+ My wunderground-powered weather dashboard) was sadly a victim of this change, and as for my personal use I don&rsquo;t need the extended (paid) services or features offered in The Weather Company tiers, I had to look for a different option to enable back my dashboard.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/replacing_wunderground_with_openweather/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Moving from Wunderground to OpenWeatherMap</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-03-09" itemprop="datePublished">Sat, Mar 9, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="moving-from-wunderground-to-openweathermap">Moving from Wunderground to OpenWeatherMap</h1>
+
+<p>From <a href="https://www.wunderground.com/weather/api/">Wunderground site</a>:</p>
+
+<blockquote>
+<p>The Weather Underground API has reached the end of service. To purchase access to the replacement API, please see our Weather Data Packages. If you are a contracted, paying customer and feel you have been shut off in error, please email feedback.wunderground@weather.com; be sure to include your name and API key.</p>
+</blockquote>
+
+<p>My <a href="/post/smart-home-with-influxdb-grafana-hue-enocean/">wunderground-powered weather dashboard</a>) was sadly a victim of this change, and as for my personal use I don&rsquo;t need the extended (paid) services or features offered in <a href="http://biz.weather.com/WU-Data-API_Data-Package-Demo-Request.html">The Weather Company tiers</a>, I had to look for a different option to enable back my dashboard.</p>
+
+<p>In this <a href="https://www.reddit.com/r/webdev/comments/8tjavu/now_that_the_free_wunderground_api_has_been/">reddit thread</a> alternatives to wunderground have been suggested, I chose to migrate to <a href="https://openweathermap.org">OpenWeatherMap</a> for the following:</p>
+
+<ul>
+<li>Up to 60 calls per minute, but they recommend to keep as low as 1 per 10 minutes, which is OK for my usage</li>
+<li>Simple and well-documented API</li>
+<li>Descriptive weather condition mapped to <code>id</code> fields in the JSON payload, which makes it easier to build rules (although its numbering is a bit messy)</li>
+</ul>
+
+<p>There are disadvantages or course:</p>
+
+<ul>
+<li>Not as many weather stations as Wunderground, but I found at least 5 in Berlin and one of them was close to where I live</li>
+<li>No <code>feels-like</code> temperature data, although it can be calculated.</li>
+<li>Updates are slower than Wunderground, but as I plan to update every 10 minutes is fine</li>
+</ul>
+
+<p>I imported the <a href="https://openweathermap.org/weather-conditions">weather condition codes</a> as a JSON, to allow later to map a given lighting setting to a weather status.</p>
+
+<pre><code class="language-json">{
+	&quot;200&quot;: {
+		&quot;description&quot;: &quot;thunderstorm with light rain&quot;,
+		&quot;action&quot;: &quot;default&quot;
+	},
+	&quot;201&quot;: {
+		&quot;description&quot;: &quot;thunderstorm with rain&quot;,
+		&quot;action&quot;: &quot;default&quot;
+	},
+	&quot;202&quot;: {
+		&quot;description&quot;: &quot;thunderstorm with heavy rain&quot;,
+		&quot;action&quot;: &quot;default&quot;
+	}
+</code></pre>
+
+<p>As in my latest <a href="https://github.com/alignan/home-improvements/commit/4fa2cdf4d61e3628ded17b884ec5d7cda25801c8">commit</a>, I just needed to modify my previous constants:</p>
+
+<pre><code class="language-python">OPENWEATHER_PATH    = &quot;openweather.json&quot;
+OPENWEATHER_URL     = '/weather?id=2950159'
+</code></pre>
+
+<p>And update the getter and parser:</p>
+
+<pre><code class="language-python">    openweather_states = get_file(OPENWEATHER_PATH)
+    openweather_api = get_file(CRED_FILE_PATH)
+    openweather_url = 'http://api.openweathermap.org/data/2.5/{0}&amp;units=metric&amp;appid={1}'.format(
+        OPENWEATHER_URL, openweather_api['openweather'])
+
+    r = requests.get(openweather_url).json()
+
+    # build my dictionary array to write to database
+    meas = {}
+    meas['berlin_temperature'] = round(float(r['main']['temp']), 2)
+    meas['berlin_humidity'] = round(float(r['main']['humidity']), 2)
+    meas['weather_state'] = r['weather'][0]['description']
+    meas['berlin_pressure'] = round(float(r['main']['pressure']), 2)
+    meas['berlin_wind_speed_kph'] = round(float(r['wind']['speed']), 2)
+</code></pre>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/wunderground/">Wunderground</a>, 
+            
+                <a href="/tags/openweather/">Openweather</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Moving%20from%20Wunderground%20to%20OpenWeatherMap&url=%2fpost%2freplacing_wunderground_with_openweather%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2freplacing_wunderground_with_openweather%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2freplacing_wunderground_with_openweather%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Moving%20from%20Wunderground%20to%20OpenWeatherMap&url=%2fpost%2freplacing_wunderground_with_openweather%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

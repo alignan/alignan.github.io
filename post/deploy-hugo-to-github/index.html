@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Deploy Hugo to Github pages and build with Travis CI &middot; Antonio Lignan</title>
+        <meta name="description" content="Deploy a Hugo website to Github pages and build with Travis CI  GitHub provides free and fast static hosting over SSL for personal, organization, or project pages directly from a GitHub repository via its GitHub Pages service.
+ I know there are other options, such as Netlify, but I was not too keen to yet depend on another framework, specially one using node.js&hellip; famous last words&hellip;
+This is part of my Challenge to make 26 years before 2017 ends.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.29" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Deploy Hugo to Github pages and build with Travis CI">
+<meta property="og:description" content="Deploy a Hugo website to Github pages and build with Travis CI  GitHub provides free and fast static hosting over SSL for personal, organization, or project pages directly from a GitHub repository via its GitHub Pages service.
+ I know there are other options, such as Netlify, but I was not too keen to yet depend on another framework, specially one using node.js&hellip; famous last words&hellip;
+This is part of my Challenge to make 26 years before 2017 ends.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/post/deploy-hugo-to-github/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/4Li6NaN">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/alignan">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/antonio-li%c3%b1%c3%a1n-colina-73566229">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:antonio.lignan@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/projects/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/about">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="CV" href="/cv">CV</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Deploy Hugo to Github pages and build with Travis CI</h1>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-10-02" itemprop="datePublished">Mon, Oct 2, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="" itemprop="url" rel="author">Antonio Lignan</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="deploy-a-hugo-website-to-github-pages-and-build-with-travis-ci">Deploy a Hugo website to Github pages and build with Travis CI</h1>
+
+<blockquote>
+<p>GitHub provides free and fast static hosting over SSL for personal, organization, or project pages directly from a GitHub repository via its <a href="https://help.github.com/articles/what-is-github-pages/">GitHub Pages service</a>.</p>
+</blockquote>
+
+<p>I know there are other options, such as <a href="https://www.netlify.com/blog/2016/10/27/a-step-by-step-guide-deploying-a-static-site-or-single-page-app/">Netlify</a>, but I was not too keen to yet depend on another framework, specially one using <code>node.js</code>&hellip; famous last words&hellip;</p>
+
+<p>This is part of my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge to make 26 years before 2017 ends</a>.</p>
+
+<h2 id="what-didn-t-work-or-at-least-i-gave-up-in-5-minutes">What didn&rsquo;t work&hellip; or at least I gave up in 5 minutes</h2>
+
+<p>From the <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hugo&rsquo;s tutorial</a>:</p>
+
+<pre><code class="language-bash">git checkout --orphan gh-pages
+git reset --hard
+git commit --allow-empty -m &quot;Initializing gh-pages branch&quot;
+git push origin gh-pages
+git checkout master
+rm -rf public
+git worktree add -B gh-pages public origin/gh-pages
+</code></pre>
+
+<p>Create the following <code>commit-gh-pages-files.sh</code>:</p>
+
+<pre><code class="language-bash">hugo -D
+cd public &amp;&amp; git add --all &amp;&amp; git commit -m &quot;Publishing to gh-pages&quot; &amp;&amp; cd ..
+</code></pre>
+
+<p>And run with exec mode:</p>
+
+<pre><code class="language-bash">chmod +x commit-gh-pages-files.sh
+./commit-gh-pages-files.sh
+</code></pre>
+
+<p>Push your changes:</p>
+
+<pre><code class="language-bash">git push origin gh-pages
+</code></pre>
+
+<p>The next step is to point <code>Github</code> from where do we want to publish our page, by default it should use the same <code>gh-pages</code> branch we just created, but double-checking does no harm.  On the repository page go to the <code>Option</code> tab (not the same as the profile one), and scroll down until you reach to the Github pages.</p>
+
+<p>The page was published at <a href="https://alignan.github.io/argos-library">https://alignan.github.io/argos-library/</a>.</p>
+
+<p>I followed all steps above but the result was not as expected:</p>
+
+<p><a href="/img/deploy-hugo-to-github/00.png"><img src="/img/deploy-hugo-to-github/00.png" alt="" /></a></p>
+
+<p>Hardly the result I was expecting!</p>
+
+<p>The pase was not rendering functional (i.e. the links were broken and pointing to a default <code>404</code> page)&hellip; what!?  I even changed the <code>baseURL = &quot;/&quot;</code> as pointed in some documentation.  The theme was not rendering properly&hellip;</p>
+
+<h2 id="next-thing-i-tried">Next thing I tried&hellip;</h2>
+
+<p>From <a href="https://haruair.github.io/post/setup-hugo-blog-on-github-pages-with-travis-ci/">haruair</a> site I took the following instructions, which is great because I wanted to have a <a href="https://travis-ci.org">Travis</a> integration as well.</p>
+
+<p>First step is clean up the mess from the section above:</p>
+
+<pre><code class="language-bash">rm -rf public
+git worktree prune
+git branch -D gh-pages
+git push origin :gh-pages
+</code></pre>
+
+<p>However the setup instructions didn&rsquo;t convince me&hellip; I also checked instructions at <a href="https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/">Jente&rsquo;s blog</a>, but I wanted to keep my master branch for sources, and I felt I was going the wrong direction&hellip;</p>
+
+<h2 id="the-one-i-finally-implemented">The one I finally implemented</h2>
+
+<p>Then I stumbled upon <a href="https://github.com/whipperstacker/blog/blob/master/content/post/deploying-a-hugo-site-to-github-pages.md">this snippet</a> and the explanation about why using <code>gh-pages</code> is not recommended made sort of sense: from a practical perspective, I&rsquo;m creating a personal page (user page), whereas I might create pages for my specific projects (gh-pages) - this semantic differentiation was logical.</p>
+
+<p>The next step is to create a new repository to host the <strong><em>rendered site from Hugo</em></strong> and add as submodule, I created mine as <code>alignan.github.io</code> as expected <a href="https://help.github.com/articles/user-organization-and-project-pages/">by the User pages</a> (see the link for more information).</p>
+
+<p><strong><em>Pro-tip:</em></strong> remember to change the <code>draft: false</code> in your posts!, else it will not be rendered by Hugo (unless you are enabling the option to render drafts).</p>
+
+<pre><code class="language-bash">rm -rf public
+git submodule add -f https://github.com/alignan/alignan.github.io.git public
+</code></pre>
+
+<p>Now render the page, and publish to the <code>alignan.github.io</code> repository.</p>
+
+<pre><code class="language-bash">hugo
+cd public &amp; git add .
+git commit -m &quot;Rendered website&quot;
+git push -f origin master
+</code></pre>
+
+<p>Now back to the main source code repo (in the step above remember we are in the <code>/public</code> folder):</p>
+
+<pre><code class="language-bash">cd ..
+git add .
+git commit -m &quot;Added a repository to render the site&quot;
+git push -u origin master
+</code></pre>
+
+<p>If everything was done correctly, you should see both <code>submodules</code>:</p>
+
+<pre><code class="language-bash">$ cat .gitmodules 
+[submodule &quot;themes/ghostwriter&quot;]
+	path = themes/ghostwriter
+	url = https://github.com/jbub/ghostwriter
+[submodule &quot;public&quot;]
+	path = public
+	url = git@github.com:alignan/alignan.github.io.git
+</code></pre>
+
+<p>And the site now renders as below:</p>
+
+<p><a href="/img/deploy-hugo-to-github/01.png"><img src="/img/deploy-hugo-to-github/01.png" alt="" /></a></p>
+
+<h2 id="keeping-the-blog-updated">Keeping the blog updated</h2>
+
+<p>Well, sort of&hellip; more like &ldquo;how can I publish with just one bash script away&rdquo;&hellip;</p>
+
+<pre><code class="language-bash">touch build-and-deploy.sh
+chmod +x build-and-deploy.sh
+</code></pre>
+
+<p>I put this together just to test (doesn&rsquo;t check for errors):</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to Github...\033[0m&quot;
+
+# Build the project
+hugo
+
+# Add changes to git
+cd public
+git add -A
+
+# Commit changes
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos
+git push origin master
+cd ..
+</code></pre>
+
+<p>Each time I run the <code>build-and-deploy.sh</code> script, it will render the site, commit changes using the <code>timestamp</code> and push to my site repository (not the source code one).  This is a basic automation, but far from continuously building.  Other options (again, like <a href="https://www.netlify.com/blog/2016/10/27/a-step-by-step-guide-deploying-a-static-site-or-single-page-app/">Netlify</a>) are highly appealing, specially if I want to scale beyond the 1GB of hosting and the building restrictions Github has&hellip; but the objective of this was <em>just learn something new</em>, and to avoid putting more excuses and optimizations in the queue.</p>
+
+<p>As above, one of my second objectives for my <a href="https://github.com/alignan/things-to-do/blob/master/README.md">Challenge</a> was to automate &ldquo;something&rdquo; using either Travis or Jenkins&hellip; why not this blog?</p>
+
+<h2 id="continuous-integration-with-travis-ci">Continuous Integration with Travis CI</h2>
+
+<p>Sign to <a href="https://travis-ci.com">Travis</a> using your Github account.  When you create your Travis account, you grant Travis access to your GitHub account, which means Travis can access your GitHub repositories.</p>
+
+<p>The next step is to teach Travis how to build Hugo.  There are two ways to compile the site, one is to pull the dependencies, install and compile (which would take more time), or to include a pre-compiled Hugo binary from the <a href="https://github.com/gohugoio/hugo/releases">release page</a>.</p>
+
+<p>The one used for the next step is the <a href="https://github.com/gohugoio/hugo/releases/tag/v0.29">V0.29</a>.</p>
+
+<p>The flow should be as below:</p>
+
+<ul>
+<li>I push to <code>master</code> at <a href="https://github.com/alignan/argos-library">https://github.com/alignan/argos-library</a></li>
+<li>Travis install the pre-requisites to run Hugo&rsquo;s binary and compiles the site in <code>/public</code></li>
+<li>Travis creates a new build commit and pushes to <code>master</code> at <a href="https://github.com/alignan/alignan.github.io">https://github.com/alignan/alignan.github.io</a></li>
+</ul>
+
+<p>As an user, I want to use my github name and email in the automated process.</p>
+
+<p>I got plenty of inspiration from <a href="http://rcoedo.com/post/hugo-static-site-generator/">Roman Coedo&rsquo;s blog</a>, but I also got some tips from <a href="https://www.metachris.com/2017/04/continuous-deployment-hugo---travis-ci--github-pages/">Chris Hager&rsquo;s blog</a>, <a href="https://medium.com/zendesk-engineering/how-to-create-a-website-like-freshswift-net-using-hugo-travis-ci-and-github-pages-67be6f480298">Zendesk</a> and <a href="https://www.martinkaptein.com/blog/hugo-with-travis-ci-on-gh-pages/">Martin Kaptein</a> - credits to them all.</p>
+
+<p>To avoid putting information about my key in my repo (even if encrypted), I followed the next advice:</p>
+
+<blockquote>
+<p>Travis CI also needs write-access to the GitHub repository, to be able to update the gh-pages branch. For this we provide a GitHub token environment variable named GITHUB_TOKEN in this example. Environment variables can be specified on the Travis CI website in the repository settings (see the Travis environment variables docs). You can generate this token in your GitHub account settings under “Personal access tokens -&gt; Generate new token” (ensure that the “repo” checkbox is enabled).</p>
+</blockquote>
+
+<p>Once I got my token, next step is to activate the repository in Travis: just navigate through your repository list and click <code>activate</code>.  In the repository <code>settings</code> I enabled the following options:</p>
+
+<ul>
+<li>Build only is a <code>.yml</code> file is present</li>
+<li>Build branch updates</li>
+<li>Build Pull Request updates</li>
+</ul>
+
+<p>And in the <code>Environmental variables</code> field, I created a <code>GITHUB_TOKEN</code> variable, with the value of the token I got from my Github account.  One important thing: <strong><em>do not forget to disable the option to Display the value in the build log!</em></strong>.</p>
+
+<p><a href="/img/deploy-hugo-to-github/02.png"><img src="/img/deploy-hugo-to-github/02.png" alt="" /></a></p>
+
+<p>The next step is to set the <code>.travis.yml</code> properly, which will be used by <code>Travis</code> to automate the tasks.  More information about this can be found in <a href="https://docs.travis-ci.com/user/deployment/pages/">Travis CI&rsquo;s Github page deployment help</a>.  This is the my <a href="https://github.com/alignan/argos-library/blob/master/.travis.yml">.travis.yml</a> file:</p>
+
+<pre><code class="language-yaml"># Environment
+os:
+    - linux
+
+# Install the apt prerequisites
+addons:
+  apt:
+    packages:
+      - python-pygments
+
+# Compile the site
+script:
+    - binaries/hugo --theme=ghostwriter
+
+# Deploy the site - this hook comes from Travis integration
+deploy:
+    # The output of our static site
+    local_dir: public
+    # The repository we are deploying to
+    repo: alignan/alignan.github.io
+    # The branch we are pushing the static repository
+    target_branch: master
+    # Information to use in the commit
+    email: antonio.lignan@gmail.com
+    name: &quot;Antonio Lignan&quot;
+    provider: pages
+    # Recommended setting
+    skip_cleanup: true
+    # Set in Travis CI dashboard
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: master
+</code></pre>
+
+<p>As shown below, it takes less than a minute to run Travis CI routine, and now just by pushing to master the site is rendered automatically.</p>
+
+<p><a href="/img/deploy-hugo-to-github/03.png"><img src="/img/deploy-hugo-to-github/03.png" alt="" /></a></p>
+
+<p>The commit history in the <code>https://github.com/alignan/alignan.github.io</code> is squashed, but I don&rsquo;t mind losing the history (at the moment, famous last words yet again&hellip;).</p>
+
+<h2 id="final-tweaking">Final tweaking</h2>
+
+<p>The final touch is to set a <a href="https://docs.travis-ci.com/user/status-images/">Travis CI build badge</a> to the repository.</p>
+
+<p>As the instructions in the previous link, I just clicked on the <code>badge</code> and copied the link in Markdown format, then pasted it in the <code>README.md</code> file.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/challenge-2017/">Challenge 2017</a>, 
+            
+                <a href="/tags/blog/">Blog</a>, 
+            
+                <a href="/tags/hugo/">Hugo</a>, 
+            
+                <a href="/tags/travis-ci/">Travis CI</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Deploy%20Hugo%20to%20Github%20pages%20and%20build%20with%20Travis%20CI&url=%2fpost%2fdeploy-hugo-to-github%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fdeploy-hugo-to-github%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fpost%2fdeploy-hugo-to-github%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Deploy%20Hugo%20to%20Github%20pages%20and%20build%20with%20Travis%20CI&url=%2fpost%2fdeploy-hugo-to-github%2f&summary="
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Antonio Lignan&#39;s blog" href="/">Antonio Lignan&#39;s blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2019 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+
